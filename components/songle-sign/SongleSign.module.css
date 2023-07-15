@@ -2,5 +2,64 @@
     width: 600px;
     height: 100px;
     background-color: #1db954;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+}
+
+.letter-container {
+    width: calc(100% / 6);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter {
+    display: flex;
+    font-size: 3rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    z-index: 3;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: url("/background.png");
+    animation: background 3s infinite;
+}
+
+@keyframes background {
+    0%, 100% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+}
+
+.block {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    background-color: #1E1E1E;
+    top: 7.5px;
+    border-radius: 1.5rem;
+    z-index: 2;
+    animation: slide 3s infinite;
+}
+
+@keyframes slide {
+    0% {
+        left: 7.5px;
+    }
+
+    50% {
+        left: 107.5px;
+    }
+
+
+    100% {
+        left: 7.5px;
+    }
 }
