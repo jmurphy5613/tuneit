@@ -1,0 +1,27 @@
+.buttons-container {
+    width: 100%;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    width: 300px;
+    height: 55px;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 3px solid #1db954;
+    color: #1db954;
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #1db954;
+    color: #121212;
+    transform: translateY(-3px);
+}
