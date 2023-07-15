@@ -25,8 +25,21 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+    background-image: url("/background2.png");
+    animation: background-reverse 3s infinite;
+}
+
+.other-letter {
+    display: flex;
+    font-size: 3rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    z-index: 3;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
     background-image: url("/background.png");
-    animation: background 3s infinite;
+    animation: background-reverse 3s infinite;
 }
 
 @keyframes background {
@@ -38,15 +51,49 @@
     }
 }
 
-.block {
+@keyframes background-reverse {
+    0%, 100% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+}
+
+.block1 {
     height: 85px;
     width: 85px;
     position: absolute;
     background-color: #1E1E1E;
     top: 7.5px;
+    left: 7.5px;
     border-radius: 1.5rem;
     z-index: 2;
     animation: slide 3s infinite;
+}
+
+.block2 {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    background-color: #1E1E1E;
+    top: 7.5px;
+    left: 207.5px;
+    border-radius: 1.5rem;
+    z-index: 2;
+    animation: slide2 3s infinite;
+}
+
+.block3 {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    background-color: #1E1E1E;
+    top: 7.5px;
+    left: 407.5px;
+    border-radius: 1.5rem;
+    z-index: 2;
+    animation: slide3 3s infinite;
 }
 
 @keyframes slide {
@@ -61,5 +108,23 @@
 
     100% {
         left: 7.5px;
+    }
+}
+
+@keyframes slide2 {
+    0%, 100% {
+        left: 207.5px;
+    }
+    50% {
+        left: 307.5px;
+    }
+}
+
+@keyframes slide3 {
+    0%, 100% {
+        left: 407.5px;
+    }
+    50% {
+        left: 507.5px;
     }
 }
