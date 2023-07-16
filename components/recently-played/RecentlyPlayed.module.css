@@ -20,7 +20,7 @@
 
 .slider-container {
     width: 200%;
-    height: 3rem;
+    height: 100%;
     overflow: hidden;
     position: relative;
 }
@@ -51,7 +51,7 @@
     border-radius: 50px;
     padding: 0.2rem 0.5rem 0.2rem 0.5rem;
     position: relative;
-    top: 1rem;
+    top: calc(80px / 2);
 }
 
 .profile-image-container {
