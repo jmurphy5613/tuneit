@@ -26,7 +26,7 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-image: url("/background2.png");
-    animation: background-reverse 3s infinite;
+    animation: background-reverse 4s infinite;
 }
 
 .other-letter {
@@ -39,7 +39,7 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-image: url("/background.png");
-    animation: background-reverse 3s infinite;
+    animation: background-reverse 4s infinite;
 }
 
 @keyframes background {
@@ -69,7 +69,7 @@
     left: 7.5px;
     border-radius: 1.5rem;
     z-index: 2;
-    animation: slide 3s infinite;
+    animation: slide 4s infinite;
 }
 
 .block2 {
@@ -81,7 +81,7 @@
     left: 207.5px;
     border-radius: 1.5rem;
     z-index: 2;
-    animation: slide2 3s infinite;
+    animation: slide2 4s infinite;
 }
 
 .block3 {
@@ -93,7 +93,7 @@
     left: 407.5px;
     border-radius: 1.5rem;
     z-index: 2;
-    animation: slide3 3s infinite;
+    animation: slide3 4s infinite;
 }
 
 @keyframes slide {
