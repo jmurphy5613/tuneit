@@ -16,6 +16,16 @@
     align-items: center;
 }
 
+.letter-not-animated {
+    display: flex;
+    font-size: 3rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    z-index: 3;
+    background-clip: text;
+    color: #1db954;
+}
+
 .letter {
     display: flex;
     font-size: 3rem;
@@ -27,6 +37,15 @@
     -webkit-background-clip: text;
     background-image: url("/background2.png");
     animation: background-reverse 4s infinite;
+}
+
+.other-letter-not-animated {
+    display: flex;
+    font-size: 3rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    z-index: 3;
+    color: white;
 }
 
 .other-letter {
@@ -41,6 +60,8 @@
     background-image: url("/background.png");
     animation: background-reverse 4s infinite;
 }
+
+
 
 @keyframes background {
     0%, 100% {
@@ -58,6 +79,39 @@
     50% {
         background-position: 0% 0%;
     }
+}
+
+.not-animated-block1 {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    background-color: #1E1E1E;
+    top: 7.5px;
+    left: 7.5px;
+    border-radius: 1.5rem;
+    z-index: 2;
+}
+
+.not-animated-block2 {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    background-color: #1E1E1E;
+    top: 7.5px;
+    left: 207.5px;
+    border-radius: 1.5rem;
+    z-index: 2;
+}
+
+.not-animated-block3 {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    background-color: #1E1E1E;
+    top: 7.5px;
+    left: 407.5px;
+    border-radius: 1.5rem;
+    z-index: 2;
 }
 
 .block1 {
