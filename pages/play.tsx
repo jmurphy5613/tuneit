@@ -1,8 +1,8 @@
-
+import styles from '../styles/Game.module.css'
 
 const Play = () => {
     return (
-        <div>
+        <div className={styles.container}>
 
         </div>
     )

@@ -8,13 +8,16 @@ interface HomeButtonsProps {
 }
 
 const HomeButtons:React.FC<HomeButtonsProps> = ({ router, isLoggedIn }) => {
+
+    console.log(isLoggedIn)
+
     return (
         <div className={styles["buttons-container"]}>
             {
             isLoggedIn ? 
                 <>
                     <button className={styles.button} onClick={() => {
-                        auth(router)
+                        router.push('/play')
                     }}>Play</button>
                     <button className={styles.button}>Leaderboard</button>
                     <button className={styles.button}>Signout</button>
