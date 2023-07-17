@@ -15,20 +15,12 @@ export const auth = async (router: NextRouter) => {
 
 export const getAccessToken = async (code: string): Promise<SpotifyAuthResponse> => {
     const options = {
-        url: "https://accounts.spotify.com/api/token",
-        method: "POST",
-        headers: {
-            "Authorization": "Basic " + Buffer.from(process.env.NEXT_PUBLIC_CLIENT_ID + ":" + process.env.NEXT_PUBLIC_CLIENT_SECRET).toString("base64")
-        },
-        params: {
-            grant_type: "authorization_code",
-            code: code,
-            redirect_uri: url
-        }
+        url: "/api/getAccessToken?code=" + code,
+        method: "POST"
     }
 
     const response = await axios(options)
-    return response.data
+    return response.data.response
 }
 
 export const refreshAccessToken = async (refreshToken: string): Promise<SpotifyAuthResponse> => {
