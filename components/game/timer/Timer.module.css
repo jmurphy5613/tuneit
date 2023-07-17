@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seconds {
+    font-size: 2rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bar {
+    height: 10px;
+    width: 302px;
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.progress {
+    height: 10px;
+    width: 100%;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 1s linear;
+}
