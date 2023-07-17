@@ -5,7 +5,7 @@ import CreatorCredit from '@/components/creator-credit/CreatorCredit'
 import RecentlyPlayed from '@/components/recently-played/RecentlyPlayed'
 import { useRouter } from 'next/router'
 import { getAccessToken } from '@/utils/requests/auth'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
 
@@ -27,10 +27,23 @@ export default function Home() {
         }
 	}, [router.isReady])
 
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
+
+	useEffect(() => {
+        const access_token = localStorage.getItem('access_token')
+        if (access_token) {
+            setIsLoggedIn(true)
+        } else {
+            setIsLoggedIn(false)
+        }
+    }, [])
+
+    if(isLoggedIn === undefined) return <></>
+
 	return (
 		<div className={styles.container}>
 			<SongleSign />
-			<HomeButtons router={router} />
+			<HomeButtons isLoggedIn={isLoggedIn} router={router} />
 			<CreatorCredit />
 			<RecentlyPlayed />
 		</div>
