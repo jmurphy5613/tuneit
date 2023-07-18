@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.song-image-container {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #1e1e1e;
+}
+
+.question {
+    font-size: 4rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    color: white;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.content {
+    width: 80%;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    color: white;
+}
+
+.artist {
+    font-size: 1rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    color: #626262;
+}
+
+.skip-image-container {
+    height: 100%;
+    width: 3rem;
+}

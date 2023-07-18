@@ -5,3 +5,20 @@ export interface SpotifyAuthResponse {
     expires_in: number,
     refresh_token: string
 }
+
+export interface Song {
+    album: {
+        images: Array<{
+            url: string
+        }>
+    },
+    name: string,
+    artist: Array<{
+        name: string
+    }>,
+}
+
+export interface UserItem {
+    username: string,
+    image: string
+}

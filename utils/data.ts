@@ -1,7 +1,4 @@
-type UserItem = {
-    username: string,
-    image: string
-}
+import { UserItem, Song } from './types'
 
 export const userItem: UserItem[] = [
     {
@@ -24,4 +21,12 @@ export const duplicatedUserItems = (users: UserItem[]) => {
         duplicatedUsers = duplicatedUsers.concat(users)
     }
     return duplicatedUsers
+}
+
+export const tempSong: Song = {
+    name: "Rose Tint",
+    artist: [{ name: "amol" }],
+    album: {
+        images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
+    }
 }
