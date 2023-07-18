@@ -16,6 +16,7 @@ export default function Home() {
 		localStorage.setItem('access_token', authData.access_token)
 		localStorage.setItem('refresh_token', authData.refresh_token)
 		localStorage.setItem('expires_at', JSON.stringify(new Date(Date.now() + 3600 * 1000)))
+		router.push('/play')
 	}
 
 	useEffect(() => {
@@ -31,9 +32,9 @@ export default function Home() {
 
 	useEffect(() => {
 		const access_token = localStorage.getItem('access_token')
-		if (access_token) {
+		const expires_at = localStorage.getItem('expires_at')
+		if (access_token && expires_at && new Date(expires_at) > new Date()) {
 			setIsLoggedIn(true)
-			console.log('hey')
 		} else {
 			setIsLoggedIn(false)
 		}
@@ -41,7 +42,6 @@ export default function Home() {
 
 	if (isLoggedIn === undefined) return <></>
 
-	console.log(isLoggedIn)
 
 	return (
 		<div className={styles.container}>

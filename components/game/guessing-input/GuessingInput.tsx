@@ -13,7 +13,7 @@ const GuessingInput = () => {
     })
 
     return (
-        <div>
+        <>
             <input type="text" placeholder='Enter guess here!' className={styles.input} onChange={(e) => setInputValue(e.target.value)} />
             <div className={styles.results}>
                 {
@@ -53,7 +53,7 @@ const GuessingInput = () => {
                     })
                 }
             </div>
-        </div>
+        </>
     )
 }
 

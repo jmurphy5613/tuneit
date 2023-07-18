@@ -28,7 +28,8 @@ export const tempSong: Song = {
     artist: [{ name: "amol" }],
     album: {
         images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
-    }
+    },
+    preview_url: ""
 }
 
 export const tempSongs: Song[] = [
@@ -37,20 +38,26 @@ export const tempSongs: Song[] = [
         artist: [{ name: "amol" }],
         album: {
             images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
-        }
+        },
+        preview_url: ""
+
     },
     {
         name: "Rose Tint",
         artist: [{ name: "amol" }],
         album: {
             images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
-        }
+        },
+        preview_url: ""
+
     },
     {
         name: "Rose Tint",
         artist: [{ name: "amol" }],
         album: {
             images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
-        }
+        },
+        preview_url: ""
+
     },
 ]

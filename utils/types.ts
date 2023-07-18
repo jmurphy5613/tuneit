@@ -16,9 +16,16 @@ export interface Song {
     artist: Array<{
         name: string
     }>,
+    preview_url: string,
 }
 
 export interface UserItem {
     username: string,
     image: string
+}
+
+export interface PlayableTrack {
+    song: Song,
+    instances: number,
+    playlists: string[]
 }
