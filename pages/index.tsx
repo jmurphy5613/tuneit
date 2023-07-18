@@ -1,5 +1,5 @@
 import styles from '@/styles/Home.module.css'
-import SongleSign from '@/components/home/songle-sign/SongleSign'
+import SongleSign from '@/components/songle-sign/SongleSign'
 import HomeButtons from '@/components/home/home-buttons/HomeButtons'
 import CreatorCredit from '@/components/home/creator-credit/CreatorCredit'
 import RecentlyPlayed from '@/components/home/recently-played/RecentlyPlayed'
@@ -19,27 +19,27 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-        if (router.isReady) {
-            const code = router.query.code;
-            if (code) {
-                getToken(code as string)
-            }
-        }
+		if (router.isReady) {
+			const code = router.query.code;
+			if (code) {
+				getToken(code as string)
+			}
+		}
 	}, [router.isReady])
 
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
 
 	useEffect(() => {
-        const access_token = localStorage.getItem('access_token')
-        if (access_token) {
-            setIsLoggedIn(true)
+		const access_token = localStorage.getItem('access_token')
+		if (access_token) {
+			setIsLoggedIn(true)
 			console.log('hey')
-        } else {
-            setIsLoggedIn(false)
-        }
-    }, [])
+		} else {
+			setIsLoggedIn(false)
+		}
+	}, [])
 
-    if(isLoggedIn === undefined) return <></>
+	if (isLoggedIn === undefined) return <></>
 
 	console.log(isLoggedIn)
 

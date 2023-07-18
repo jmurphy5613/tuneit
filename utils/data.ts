@@ -30,3 +30,27 @@ export const tempSong: Song = {
         images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
     }
 }
+
+export const tempSongs: Song[] = [
+    {
+        name: "Rose Tint",
+        artist: [{ name: "amol" }],
+        album: {
+            images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
+        }
+    },
+    {
+        name: "Rose Tint",
+        artist: [{ name: "amol" }],
+        album: {
+            images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
+        }
+    },
+    {
+        name: "Rose Tint",
+        artist: [{ name: "amol" }],
+        album: {
+            images: [{ url: "https://i.scdn.co/image/ab67616d0000b273b783917ab62dea2ca3063fea" }]
+        }
+    },
+]
