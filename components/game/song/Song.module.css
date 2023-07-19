@@ -12,42 +12,49 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: #1e1e1e;
-}
-
-.question {
-    font-size: 4rem;
-    font-family: "Outfit", sans-serif;
-    font-weight: 400;
-    color: white;
-}
-
-.info {
-    display: flex;
-    justify-content: space-between;
-    width: 350px;
 }
 
 .content {
-    width: 80%;
+    background-color: #1E1E1E;
+    width: 350px;
+    height: 35px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    display: flex;
+    align-items: center;
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 20px;
     font-family: "Outfit", sans-serif;
     font-weight: 400;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
+
 .artist {
-    font-size: 1rem;
+    font-size: 15px;
     font-family: "Outfit", sans-serif;
     font-weight: 400;
     color: #626262;
+    display: flex;
+    align-items: center;
 }
 
-.skip-image-container {
-    height: 100%;
-    width: 3rem;
-    cursor: pointer;
+.box1 {
+    width: 325px;
+    height: 10px;
+    background-color: rgba(98, 98, 98, 0.5);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.box {
+    width: 300px;
+    height: 10px;
+    background-color: rgba(98, 98, 98, 0.3);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

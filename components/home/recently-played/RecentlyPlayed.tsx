@@ -5,7 +5,7 @@ import Image from 'next/image'
 const RecentlyPlayed = () => {
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Recent Players:</h1>
+            <h1 className={styles.title}>Recent Users:</h1>
             <div className={styles["slider-container"]}>
                 <div className={styles["slider-animation"]}>
                     {duplicatedUserItems(userItem).map((item, index) => {
