@@ -18,6 +18,8 @@
     "next": "13.4.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-wavesurfer.js": "^0.0.8",
+    "typescript": "5.1.6",
+    "wavesurfer.js": "^7.0.3"
   }
 }

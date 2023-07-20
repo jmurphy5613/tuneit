@@ -1,28 +1,15 @@
 import styles from './Song.module.css'
 import { Song } from '@/utils/types'
 import Image from 'next/image'
-import { useState } from 'react'
+import WaveSurferPlayer from './SoundWave'
+
 
 interface SongProps {
     song: Song
-    isRevealed: boolean
 }
 
-const Song: React.FC<SongProps> = ({ isRevealed, song }) => {
 
-    const anonomize = (title: string) => {
-        let newString = ""
-        for (let i = 0; i < title.length; i++) {
-            if (title[i] === " ") {
-                newString += " "
-            } else {
-                newString += "?"
-            }
-        }
-        return newString
-    }
-
-    const [hoveringSkip, setHoveringSkip] = useState<boolean>(false)
+const Song: React.FC<SongProps> = ({ song }) => {
 
     return (
         <div className={styles.container}>
@@ -43,6 +30,22 @@ const Song: React.FC<SongProps> = ({ isRevealed, song }) => {
                 <div className={styles["external-icon-container"]}>
 
                 </div>
+            </div>
+            <div className={styles["music-graph-container"]}>
+                <WaveSurferPlayer
+                    waveColor={'#626262'}
+                    progressColor={'#1db954'}
+                    url={song.preview_url}
+                    barWidth={10}
+                    barHeight={0.5}
+                    barGap={2}
+                    barRadius={2}
+                    barAlign={"bottom"}
+                    hideScrollbar= {true}
+                    cursorWidth={0} 
+                    sayHello={() => console.log("hello")}
+                    // autoplay={true} 
+                />
             </div>
         </div>
     )
