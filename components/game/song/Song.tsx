@@ -37,14 +37,13 @@ const Song: React.FC<SongProps> = ({ song }) => {
                     progressColor={'#1db954'}
                     url={song.preview_url}
                     barWidth={10}
-                    barHeight={0.5}
+                    barHeight={0.6}
                     barGap={2}
                     barRadius={2}
                     barAlign={"bottom"}
                     hideScrollbar= {true}
                     cursorWidth={0} 
-                    sayHello={() => console.log("hello")}
-                    // autoplay={true} 
+                    height={100}
                 />
             </div>
         </div>

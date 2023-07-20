@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
 }
 
 .song-image-container {
@@ -71,6 +70,8 @@
 .button-container {
     display: flex;
     align-items: flex-end;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .no {
@@ -78,6 +79,16 @@
     width: 50px;
     border-radius: 100%;
     background-color: #A12828;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.no-icon-container {
+    position: relative;
+    height: 30px;
+    width: 30px;
 }
 
 .control {
@@ -93,9 +104,25 @@
     cursor: pointer;
 }
 
+.control-icon-container {
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
 .yes {
     height: 50px;
     width: 50px;
     border-radius: 100%;
-    background-color: #1DB954; 
+    background-color: #1DB954;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; 
+}
+
+.yes-icon-container {
+    position: relative;
+    height: 30px;
+    width: 30px;
 }

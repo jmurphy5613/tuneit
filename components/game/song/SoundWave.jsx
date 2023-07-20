@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import WaveSurfer from 'wavesurfer.js'
 import styles from './Song.module.css'
+import Image from 'next/image'
 
 const useWavesurfer = (containerRef, options) => {
     const [wavesurfer, setWavesurfer] = useState(null)
@@ -66,17 +67,35 @@ const WaveSurferPlayer = (props) => {
 
     return (
         <>
-            <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+            <div ref={containerRef} style={{ width: '100%' }} />
 
             <div className={styles["button-container"]}>
                 <div className={styles.no}>
-                    
+                    <div className={styles["no-icon-container"]}>
+                        <Image 
+                            src="/icons/cross.svg"
+                            fill
+                            alt='cross'
+                        />
+                    </div>
                 </div>
                 <div className={styles.control}>
-
+                    <div className={styles["control-icon-container"]}>
+                        <Image
+                            src="/icons/pause.svg"
+                            fill
+                            alt='pause'
+                        />
+                    </div>
                 </div>
                 <div className={styles.yes}>
-
+                    <div className={styles["yes-icon-container"]}>
+                        <Image
+                            src="/icons/check.svg"
+                            fill
+                            alt='check'
+                        />
+                    </div>
                 </div>
             </div>
 
