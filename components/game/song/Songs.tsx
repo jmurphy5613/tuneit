@@ -1,9 +1,10 @@
 import styles from './Song.module.css'
 import { Song } from '@/utils/types'
 import Image from 'next/image'
-import WaveSurferPlayer from './SoundWave'
+import WaveSurferPlayer from '../SoundWave/SoundWave'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import SpotifyIcon from '@/public/icons/Spotify'
 
 
 
@@ -26,6 +27,8 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
     const [y, setY] = useState(0)
     const [rotate, setRotate] = useState(0)
 
+    const [hoveringIcon, setHoveringIcon] = useState(false)
+
     useEffect(() => {
         if (currentIndex !== index) return
         if (lastSongDecision === 'yes') {
@@ -36,7 +39,7 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
             setX(-1000)
             setY(0)
             setRotate(-45)
-        } 
+        }
     }, [currentIndex, lastSongDecision])
 
 
@@ -47,13 +50,13 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
                 animate={{
                     x: x,
                     y: y,
-                    rotate: rotate, 
+                    rotate: rotate,
                     transition: {
                         duration: 0.5
                     }
                 }}
                 transition={{ type: "spring" }}
-                style={{ position: 'absolute', bottom: 0, zIndex: 10-index }}
+                style={{ position: 'absolute', bottom: 0, zIndex: 10 - index }}
             >
                 <div className={styles["song-image-container"]}>
                     <Image
@@ -67,8 +70,11 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
                         <h1 className={styles.title}>{song.name}</h1>
                         <h2 className={styles.artist}>{song.artist[0].name}</h2>
                     </div>
-                    <div className={styles["external-icon-container"]}>
-                        {index}
+                    <div className={styles["external-icon-container"]}
+                        onMouseEnter={() => setHoveringIcon(true)}
+                        onMouseLeave={() => setHoveringIcon(false)}
+                    >
+                        <SpotifyIcon fill={hoveringIcon ? '#1db954' : '#626262'} />
                     </div>
                 </div>
             </motion.div>
@@ -78,9 +84,6 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
 
 
 const Songs: React.FC<SongsProps> = ({ songs, currentIndex, lastSongDecision }) => {
-
-    console.log(currentIndex, lastSongDecision)
-
     return (
         <div className={styles.container}>
 

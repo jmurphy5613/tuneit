@@ -22,11 +22,13 @@
     padding-right: 0.75rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .names {
     display: flex;
     align-items: flex-end;
+    width: 80%;
 }
 
 .title {
@@ -68,3 +70,9 @@
     width: 350px;
 }
 
+.external-icon-container {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    cursor: pointer;
+}
