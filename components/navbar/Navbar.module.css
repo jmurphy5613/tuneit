@@ -5,3 +5,31 @@
     justify-content: space-between;
     background-color: #121212;
 }
+
+.right-container {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    z-index: 2;
+}
+
+.profile-image-container {
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    height: 100%;
+}
+.link:hover {
+    color: #1db954;
+}
