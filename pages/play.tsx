@@ -1,5 +1,5 @@
 import styles from '../styles/Game.module.css'
-import Song from '@/components/game/song/Song'
+import Songs from '@/components/game/song/Songs'
 import { tempSong, tempSong2 } from '@/utils/data'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -12,7 +12,8 @@ import { relative } from 'path'
 const Play = () => {
 
 
-    const [currentIndex, setCurrentIndex] = useState(0)
+    const [currentIndex, setCurrentIndex] = useState(-1)
+    const [lastSongDecision, setLastSongDecision] = useState<'yes' | 'no' | null>(null)
 
     const nextSong = () => {
         setCurrentIndex(currentIndex + 1)
@@ -20,7 +21,11 @@ const Play = () => {
 
     const songs = [
         tempSong,
-        tempSong2
+        tempSong2,
+        tempSong,
+        tempSong2,
+        tempSong,
+        tempSong2,
     ]
 
     return (
@@ -44,15 +49,16 @@ const Play = () => {
                 </div>
 
             </div>
-            <Song 
-                song={songs[currentIndex]}
-                nextSong={nextSong}
+            <Songs
+                songs={songs}
                 currentIndex={currentIndex}
+                lastSongDecision={lastSongDecision}
             />
             
 
             <PlayerControls
-
+                nextSong={nextSong}
+                setLastSongDecision={setLastSongDecision}
             />
         </div>
     )

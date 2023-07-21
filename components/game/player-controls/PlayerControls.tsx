@@ -1,10 +1,18 @@
 import styles from './PlayerControls.module.css'
 import Image from 'next/image'
 
-const PlayerControls = () => {
+interface PlayerControlsProps {
+    nextSong: () => void,
+    setLastSongDecision: (decision: 'yes' | 'no' | null) => void,
+}
+
+const PlayerControls:React.FC<PlayerControlsProps> = ({ nextSong, setLastSongDecision }) => {
     return (
         <div className={styles["button-container"]}>
-            <div className={styles.no}>
+            <div className={styles.no} onClick={() => {
+                nextSong()
+                setLastSongDecision('no')
+            }}>
                 <div className={styles["no-icon-container"]}>
                     <Image
                         src="/icons/cross.svg"
@@ -22,7 +30,10 @@ const PlayerControls = () => {
                     />
                 </div>
             </div>
-            <div className={styles.yes}>
+            <div className={styles.yes} onClick={() => {
+                nextSong()
+                setLastSongDecision('yes')
+            }}>
                 <div className={styles["yes-icon-container"]}>
                     <Image
                         src="/icons/check.svg"
