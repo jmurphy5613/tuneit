@@ -50,11 +50,9 @@ const WaveSurferPlayer = (props) => {
             wavesurfer.on('pause', () => setIsPlaying(false)),
             wavesurfer.on('timeupdate', (currentTime) => setCurrentTime(currentTime)),
             wavesurfer.on('ready', () => {
-                if (props.shouldPlay) {
                     setTimeout(() => {
                         wavesurfer.play();
                     }, 500);
-                }
             })
         ]
 

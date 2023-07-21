@@ -4,8 +4,7 @@ import { tempSong, tempSong2 } from '@/utils/data'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import PlayerControls from '@/components/game/player-controls/PlayerControls'
-import { relative } from 'path'
-
+import WaveSurferPlayer from '@/components/game/SoundWave/SoundWave'
 
 
 
@@ -54,7 +53,23 @@ const Play = () => {
                 currentIndex={currentIndex}
                 lastSongDecision={lastSongDecision}
             />
-            
+
+            <div style={{ width: '350px' }}>
+                <WaveSurferPlayer
+                    height={100}
+                    waveColor={'#626262'}
+                    progressColor={'#1db954'}
+                    url={songs[currentIndex + 1].preview_url}
+                    barWidth={10}
+                    barHeight={0.6}
+                    barGap={2}
+                    barRadius={2}
+                    barAlign={"bottom"}
+                    hideScrollbar={true}
+                    cursorWidth={0}
+                />
+            </div>
+
 
             <PlayerControls
                 nextSong={nextSong}
