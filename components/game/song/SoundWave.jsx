@@ -51,12 +51,13 @@ const WaveSurferPlayer = (props) => {
             wavesurfer.on('play', () => setIsPlaying(true)),
             wavesurfer.on('pause', () => setIsPlaying(false)),
             wavesurfer.on('timeupdate', (currentTime) => setCurrentTime(currentTime)),
-            // wavesurfer.on('ready', () => {
-            //     setTimeout(() => {
-            //         // Play the sound
-            //         wavesurfer.play();
-            //       }, 500); 
-            // })
+            wavesurfer.on('ready', () => {
+                if (props.shouldPlay) {
+                    setTimeout(() => {
+                        wavesurfer.play();
+                    }, 500);
+                }
+            })
         ]
 
         return () => {
@@ -68,36 +69,6 @@ const WaveSurferPlayer = (props) => {
     return (
         <>
             <div ref={containerRef} style={{ width: '100%' }} />
-
-            <div className={styles["button-container"]}>
-                <div className={styles.no}>
-                    <div className={styles["no-icon-container"]}>
-                        <Image 
-                            src="/icons/cross.svg"
-                            fill
-                            alt='cross'
-                        />
-                    </div>
-                </div>
-                <div className={styles.control}>
-                    <div className={styles["control-icon-container"]}>
-                        <Image
-                            src="/icons/pause.svg"
-                            fill
-                            alt='pause'
-                        />
-                    </div>
-                </div>
-                <div className={styles.yes}>
-                    <div className={styles["yes-icon-container"]}>
-                        <Image
-                            src="/icons/check.svg"
-                            fill
-                            alt='check'
-                        />
-                    </div>
-                </div>
-            </div>
 
         </>
     )
