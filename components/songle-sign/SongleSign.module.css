@@ -8,6 +8,17 @@
     display: flex;
 }
 
+.smaller-container {
+    width: 300px;
+    height: 50px;
+    background-color: #1db954;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    margin-left: 1rem;
+}
+
 .letter-container {
     width: calc(100% / 6);
     height: 100%;
@@ -18,7 +29,7 @@
 
 .letter-not-animated {
     display: flex;
-    font-size: 3rem;
+    font-size: 24px;
     font-family: "Outfit", sans-serif;
     font-weight: 400;
     z-index: 3;
@@ -41,7 +52,7 @@
 
 .other-letter-not-animated {
     display: flex;
-    font-size: 3rem;
+    font-size: 24px;
     font-family: "Outfit", sans-serif;
     font-weight: 400;
     z-index: 3;
@@ -82,35 +93,35 @@
 }
 
 .not-animated-block1 {
-    height: 85px;
-    width: 85px;
+    height: 42.5px;
+    width: 42.5px;
     position: absolute;
     background-color: #1E1E1E;
-    top: 7.5px;
-    left: 7.5px;
-    border-radius: 1.5rem;
+    top: 3.75px;
+    left: 3.75px;
+    border-radius: 1rem;
     z-index: 2;
 }
 
 .not-animated-block2 {
-    height: 85px;
-    width: 85px;
+    height: 42.5px;
+    width: 42.5px;
     position: absolute;
     background-color: #1E1E1E;
-    top: 7.5px;
-    left: 207.5px;
-    border-radius: 1.5rem;
+    top: 3.75px;
+    left: 103.75px;
+    border-radius: 1rem;
     z-index: 2;
 }
 
 .not-animated-block3 {
-    height: 85px;
-    width: 85px;
+    height: 42.5px;
+    width: 42.5px;
     position: absolute;
     background-color: #1E1E1E;
-    top: 7.5px;
-    left: 407.5px;
-    border-radius: 1.5rem;
+    top: 3.75px;
+    left: 203.75px;
+    border-radius: 1rem;
     z-index: 2;
 }
 

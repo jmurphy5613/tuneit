@@ -1,10 +1,11 @@
 import styles from '../styles/Game.module.css'
 import Songs from '@/components/game/song/Songs'
 import { tempSong, tempSong2 } from '@/utils/data'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import PlayerControls from '@/components/game/player-controls/PlayerControls'
 import WaveSurferPlayer from '@/components/game/SoundWave/SoundWave'
+import Navbar from '@/components/navbar/Navbar'
 
 
 
@@ -28,54 +29,57 @@ const Play = () => {
     ]
 
     return (
-        <div className={styles.container}>
+        <>
+            <Navbar />
+            <div className={styles.container}>
 
-            <div className={styles["background-images"]}>
-                <div className={styles["image-container"]}>
-                    <Image
-                        src='/art/left-blob.svg'
-                        alt="vector"
-                        fill
+                <div className={styles["background-images"]}>
+                    <div className={styles["image-container"]}>
+                        <Image
+                            src='/art/left-blob.svg'
+                            alt="vector"
+                            fill
+                        />
+                    </div>
+
+                    <div className={styles["image-container"]}>
+                        <Image
+                            src='/art/right-blob.svg'
+                            alt="vector"
+                            fill
+                        />
+                    </div>
+
+                </div>
+                <Songs
+                    songs={songs}
+                    currentIndex={currentIndex}
+                    lastSongDecision={lastSongDecision}
+                />
+
+                <div style={{ width: '350px' }}>
+                    <WaveSurferPlayer
+                        height={100}
+                        waveColor={'#626262'}
+                        progressColor={'#1db954'}
+                        url={songs[currentIndex + 1].preview_url}
+                        barWidth={10}
+                        barHeight={0.6}
+                        barGap={2}
+                        barRadius={2}
+                        barAlign={"bottom"}
+                        hideScrollbar={true}
+                        cursorWidth={0}
                     />
                 </div>
 
-                <div className={styles["image-container"]}>
-                    <Image
-                        src='/art/right-blob.svg'
-                        alt="vector"
-                        fill
-                    />
-                </div>
 
-            </div>
-            <Songs
-                songs={songs}
-                currentIndex={currentIndex}
-                lastSongDecision={lastSongDecision}
-            />
-
-            <div style={{ width: '350px' }}>
-                <WaveSurferPlayer
-                    height={100}
-                    waveColor={'#626262'}
-                    progressColor={'#1db954'}
-                    url={songs[currentIndex + 1].preview_url}
-                    barWidth={10}
-                    barHeight={0.6}
-                    barGap={2}
-                    barRadius={2}
-                    barAlign={"bottom"}
-                    hideScrollbar={true}
-                    cursorWidth={0}
+                <PlayerControls
+                    nextSong={nextSong}
+                    setLastSongDecision={setLastSongDecision}
                 />
             </div>
-
-
-            <PlayerControls
-                nextSong={nextSong}
-                setLastSongDecision={setLastSongDecision}
-            />
-        </div>
+        </>
     )
 }
 
