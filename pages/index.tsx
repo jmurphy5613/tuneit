@@ -4,8 +4,11 @@ import HomeButtons from '@/components/home/home-buttons/HomeButtons'
 import CreatorCredit from '@/components/home/creator-credit/CreatorCredit'
 import RecentlyPlayed from '@/components/home/recently-played/RecentlyPlayed'
 import { useRouter } from 'next/router'
-import { getAccessToken } from '@/utils/requests/auth'
+import { auth, getAccessToken } from '@/utils/requests/auth'
 import { useEffect, useState } from 'react'
+import { createUser, getUserBySpotifyId } from '@/utils/requests/users'
+import { getUserData } from '@/utils/requests/spotify'
+import { UserInfo } from '@/utils/types'
 
 export default function Home() {
 
@@ -16,6 +19,13 @@ export default function Home() {
 		localStorage.setItem('access_token', authData.access_token)
 		localStorage.setItem('refresh_token', authData.refresh_token)
 		localStorage.setItem('expires_at', JSON.stringify(new Date(Date.now() + 3600 * 1000)))
+		const userData = await getUserData(authData.access_token)
+		const tuneItUser = await getUserBySpotifyId(userData.id)
+
+		console.log(tuneItUser, !tuneItUser)
+		if (tuneItUser.message) {
+			await createUser(userData)
+		}
 		router.push('/play')
 	}
 

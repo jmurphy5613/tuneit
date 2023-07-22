@@ -29,3 +29,17 @@ export interface PlayableTrack {
     instances: number,
     playlists: string[]
 }
+
+export interface UserInfo {
+    display_name: string,
+    followers: {
+        href: string,
+        total: number
+    },
+    images: Array<{
+        url: string,
+        height: number,
+        width: number
+    }>,
+    id: string
+}

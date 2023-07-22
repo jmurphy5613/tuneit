@@ -92,11 +92,7 @@ const Songs: React.FC<SongsProps> = ({ songs, currentIndex, lastSongDecision }) 
             <motion.div
             >
                 <div className={styles["song-image-container"]}>
-                    <Image
-                        src={''}
-                        alt="Song Image"
-                        fill
-                    />
+        
                 </div>
                 <div className={styles.content}>
                     <div className={styles.names}>
