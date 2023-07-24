@@ -15,6 +15,8 @@ const Play = () => {
     const [currentIndex, setCurrentIndex] = useState(-1)
     const [lastSongDecision, setLastSongDecision] = useState<'yes' | 'no' | null>(null)
 
+    const [startedPlaying, setStartedPlaying] = useState(false)
+
     const nextSong = () => {
         setCurrentIndex(currentIndex + 1)
     }
@@ -70,14 +72,20 @@ const Play = () => {
                         barAlign={"bottom"}
                         hideScrollbar={true}
                         cursorWidth={0}
+                        startedPlaying={startedPlaying}
                     />
                 </div>
 
-
-                <PlayerControls
-                    nextSong={nextSong}
-                    setLastSongDecision={setLastSongDecision}
-                />
+                {startedPlaying ?
+                    <PlayerControls
+                        nextSong={nextSong}
+                        setLastSongDecision={setLastSongDecision}
+                    />
+                    :
+                    <button className={styles["start-listening"]} onClick={() => {
+                        setStartedPlaying(true)
+                    }}>Start Listening!</button>
+                }
             </div>
         </>
     )
