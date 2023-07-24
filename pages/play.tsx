@@ -35,7 +35,7 @@ const Play = () => {
             <Navbar />
             <div className={styles.container}>
 
-                <div className={styles["background-images"]}>
+                {/* <div className={styles["background-images"]}>
                     <div className={styles["image-container"]}>
                         <Image
                             src='/art/left-blob.svg'
@@ -52,7 +52,7 @@ const Play = () => {
                         />
                     </div>
 
-                </div>
+                </div> */}
                 <Songs
                     songs={songs}
                     currentIndex={currentIndex}
