@@ -6,31 +6,41 @@ import HomeIcon from '../icons/HomeIcon'
 import ClockIcon from '../icons/ClockIcon'
 import BookIcon from '../icons/BookIcons'
 import GearIcon from '../icons/GearIcon'
+import LeaveIcon from '../icons/LeaveIcon'
 
-function useOutsideAlerter(ref: React.RefObject<HTMLUnknownElement>) {
-	useEffect(() => {
-		/**
-		 * Alert if clicked on outside of element
-		 */
-		function handleClickOutside(event: { target: any; }) {
-			if (ref.current && !ref.current.contains(event.target)) {
-			}
-		}
-		// Bind the event listener
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			// Unbind the event listener on clean up
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, [ref]);
-}
+
 
 const Navbar = () => {
+
+	function useOutsideAlerter(ref: React.RefObject<HTMLUnknownElement>) {
+		useEffect(() => {
+			/**
+			 * Alert if clicked on outside of element
+			 */
+			function handleClickOutside(event: { target: any; }) {
+				if (ref.current && !ref.current.contains(event.target)) {
+					setShowPopup(false)
+				}
+			}
+			// Bind the event listener
+			document.addEventListener("mousedown", handleClickOutside);
+			return () => {
+				// Unbind the event listener on clean up
+				document.removeEventListener("mousedown", handleClickOutside);
+			};
+		}, [ref]);
+	}
 
 	const wrapperRef = useRef(null);
 	useOutsideAlerter(wrapperRef);
 
-	const [showPopup, setShowPopup] = useState<boolean>(true)
+	const [showPopup, setShowPopup] = useState<boolean>(false)
+
+	const [homeHover, setHomeHover] = useState<boolean>(false)
+	const [historyHover, setHistoryHover] = useState<boolean>(false)
+	const [playlistHover, setPlaylistHover] = useState<boolean>(false)
+	const [settingsHover, setSettingsHover] = useState<boolean>(false)
+	const [logoutHover, setLogoutHover] = useState<boolean>(false)
 
 	return (
 		<div className={styles.container}>
@@ -60,29 +70,38 @@ const Navbar = () => {
 								</div>
 							</div>
 							<div className={styles.links}>
-								<div className={styles["link-item"]}>
+								<div className={styles["link-item"]} onMouseEnter={() => setHomeHover(true)} onMouseLeave={() => setHomeHover(false)}>
 									<div className={styles["icon-container"]}>
-										<HomeIcon stroke="#ffffff" />
+										<HomeIcon stroke={homeHover ? "#1db954" : "#ffffff"} />
 									</div>
-									<h2 className={styles["link-title"]}>Home</h2>
+									<h2 className={styles["link-title"]} style={{ color: homeHover ? "#1db954" : "#ffffff" }}>Home</h2>
 								</div>
-								<div className={styles["link-item"]}>
+								<div className={styles["link-item"]} onMouseEnter={() => setHistoryHover(true)} onMouseLeave={() => setHistoryHover(false)}>
 									<div className={styles["icon-container"]}>
-										<ClockIcon stroke="#ffffff" />
+										<ClockIcon stroke={historyHover ? "#1db954" : "#ffffff"} />
 									</div>
-									<h2 className={styles["link-title"]}>History</h2>
+									<h2 className={styles["link-title"]} style={{ color: historyHover ? "#1db954" : "#ffffff" }}>History</h2>
 								</div>
-								<div className={styles["link-item"]}>
+								<div className={styles["link-item"]} onMouseEnter={() => setPlaylistHover(true)} onMouseLeave={() => setPlaylistHover(false)}>
 									<div className={styles["icon-container"]}>
-										<BookIcon stroke="#ffffff" />
+										<BookIcon stroke={playlistHover ? "#1db954" : "#ffffff"} />
 									</div>
-									<h2 className={styles["link-title"]}>My Playlist</h2>
+									<h2 className={styles["link-title"]} style={{ color: playlistHover ? "#1db954" : "#ffffff" }}>My Playlist</h2>
 								</div>
-								<div className={styles["link-item"]}>
+								<div className={styles["link-item"]} onMouseEnter={() => setSettingsHover(true)} onMouseLeave={() => setSettingsHover(false)}>
 									<div className={styles["icon-container"]}>
-										<GearIcon stroke="#ffffff" />
+										<GearIcon stroke={settingsHover ? "#1db954" : "#ffffff"} />
 									</div>
-									<h2 className={styles["link-title"]}>Settings</h2>
+									<h2 className={styles["link-title"]} style={{ color: settingsHover ? "#1db954" : "#ffffff" }}>Settings</h2>
+								</div>
+
+								<div className={styles.divider} />
+
+								<div className={styles["link-item"]} onMouseEnter={() => setLogoutHover(true)} onMouseLeave={() => setLogoutHover(false)}>
+									<div className={styles["icon-container"]}>
+										<LeaveIcon stroke={logoutHover ?  "#a12828" :"#ffffff"} />
+									</div>
+									<h2 className={styles["link-title"]} style={{ color: logoutHover ?  "#a12828" :"#ffffff"  }}>Logout</h2>
 								</div>
 
 
