@@ -1,11 +1,12 @@
 import styles from '../styles/Game.module.css'
 import Songs from '@/components/game/song/Songs'
 import { tempSong, tempSong2 } from '@/utils/data'
-import { useState } from 'react'
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import PlayerControls from '@/components/game/player-controls/PlayerControls'
 import WaveSurferPlayer from '@/components/game/SoundWave/SoundWave'
 import Navbar from '@/components/navbar/Navbar'
+import { getRecommendations, getTopTracks } from '@/utils/requests/spotify'
+import { Song } from '@/utils/types'
 
 
 
@@ -16,19 +17,32 @@ const Play = () => {
     const [lastSongDecision, setLastSongDecision] = useState<'yes' | 'no' | null>(null)
 
     const [startedPlaying, setStartedPlaying] = useState(false)
+    const [shouldPlay, setShouldPlay] = useState(true)
+
+    const [songs, setSongs] = useState<Song[]>([{ ...tempSong }, { ...tempSong2}])
 
     const nextSong = () => {
         setCurrentIndex(currentIndex + 1)
     }
 
-    const songs = [
-        tempSong,
-        tempSong2,
-        tempSong,
-        tempSong2,
-        tempSong,
-        tempSong2,
-    ]
+    // const songs = [
+    //     tempSong,
+    //     tempSong2,
+    //     tempSong,
+    //     tempSong2,
+    //     tempSong,
+    //     tempSong2,
+    // ]
+
+    const fetchSongs = async () => {
+        const topTracks = await getTopTracks()
+        let recommendations = await getRecommendations(topTracks)
+        setSongs(recommendations)
+    }
+
+    useEffect(() => {
+        fetchSongs()
+    }, [])
 
     return (
         <>
@@ -73,6 +87,7 @@ const Play = () => {
                         hideScrollbar={true}
                         cursorWidth={0}
                         startedPlaying={startedPlaying}
+                        shouldPlay={shouldPlay}
                     />
                 </div>
 
@@ -80,6 +95,8 @@ const Play = () => {
                     <PlayerControls
                         nextSong={nextSong}
                         setLastSongDecision={setLastSongDecision}
+                        setShouldPlay={setShouldPlay}
+                        shouldPlay={shouldPlay}
                     />
                     :
                     <button className={styles["start-listening"]} onClick={() => {

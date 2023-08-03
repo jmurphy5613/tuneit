@@ -13,10 +13,11 @@ export interface Song {
         }>
     },
     name: string,
-    artist: Array<{
+    artists: Array<{
         name: string
     }>,
     preview_url: string,
+    id: string
 }
 
 export interface UserItem {

@@ -1,12 +1,15 @@
+import { useEffect } from 'react'
 import styles from './PlayerControls.module.css'
 import Image from 'next/image'
 
 interface PlayerControlsProps {
     nextSong: () => void,
     setLastSongDecision: (decision: 'yes' | 'no' | null) => void,
+    setShouldPlay: (state: boolean) => void,
+    shouldPlay: boolean
 }
 
-const PlayerControls:React.FC<PlayerControlsProps> = ({ nextSong, setLastSongDecision }) => {
+const PlayerControls: React.FC<PlayerControlsProps> = ({ nextSong, setLastSongDecision, setShouldPlay, shouldPlay }) => {
     return (
         <div className={styles["button-container"]}>
             <div className={styles.no} onClick={() => {
@@ -21,7 +24,7 @@ const PlayerControls:React.FC<PlayerControlsProps> = ({ nextSong, setLastSongDec
                     />
                 </div>
             </div>
-            <div className={styles.control}>
+            {shouldPlay ? <div className={styles.control} onClick={() => setShouldPlay(false)}>
                 <div className={styles["control-icon-container"]}>
                     <Image
                         src="/icons/pause.svg"
@@ -30,6 +33,18 @@ const PlayerControls:React.FC<PlayerControlsProps> = ({ nextSong, setLastSongDec
                     />
                 </div>
             </div>
+                :
+            <div className={styles.control} onClick={() => setShouldPlay(true)}>
+                <div className={styles["control-icon-container"]}>
+                    <Image
+                        src="/icons/Play_light.svg"
+                        fill
+                        alt='play'
+                    />
+                </div>
+            </div>
+                
+            }
             <div className={styles.yes} onClick={() => {
                 nextSong()
                 setLastSongDecision('yes')

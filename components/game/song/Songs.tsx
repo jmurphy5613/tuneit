@@ -56,7 +56,7 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
                     }
                 }}
                 transition={{ type: "spring" }}
-                style={{ position: 'absolute', bottom: 0, zIndex: 10 - index }}
+                style={{ position: 'absolute', bottom: 0, zIndex: 50 - index }}
             >
                 <div className={styles["song-image-container"]}>
                     <Image
@@ -68,7 +68,7 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
                 <div className={styles.content}>
                     <div className={styles.names}>
                         <h1 className={styles.title}>{song.name}</h1>
-                        <h2 className={styles.artist}>{song.artist[0].name}</h2>
+                        <h2 className={styles.artist}>{song.artists[0].name}</h2>
                     </div>
                     <div className={styles["external-icon-container"]}
                         onMouseEnter={() => setHoveringIcon(true)}
