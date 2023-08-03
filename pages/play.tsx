@@ -1,6 +1,6 @@
 import styles from '../styles/Game.module.css'
 import Songs from '@/components/game/song/Songs'
-import { tempSong, tempSong2 } from '@/utils/data'
+// import { tempSong, tempSong2 } from '@/utils/data'
 import { useEffect, useState } from 'react'
 import PlayerControls from '@/components/game/player-controls/PlayerControls'
 import WaveSurferPlayer from '@/components/game/SoundWave/SoundWave'
@@ -20,7 +20,7 @@ const Play = () => {
     const [startedPlaying, setStartedPlaying] = useState(false)
     const [shouldPlay, setShouldPlay] = useState(true)
 
-    const [songs, setSongs] = useState<Song[]>([{ ...tempSong }, { ...tempSong2}])
+    const [songs, setSongs] = useState<Song[]>([])
 
     const nextSong = () => {
         setCurrentIndex(currentIndex + 1)
@@ -55,6 +55,8 @@ const Play = () => {
     useEffect(() => {
         fetchSongs()
     }, [])
+
+    if(!songs) return <></>
 
     return (
         <>

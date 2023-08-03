@@ -47,3 +47,14 @@ export interface UserInfo {
     }>,
     id: string
 }
+
+export interface HistoryItem {
+    id: number,
+    title: string,
+    artist: string,
+    album: string,
+    albumArt: string,
+    uri: string,
+    liked: boolean,
+    duration: number
+}

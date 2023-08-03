@@ -1,9 +1,10 @@
 import axios from "axios";
-import { Song, UserInfo } from "../types";
+import { HistoryItem, Song, UserInfo } from "../types";
+import { apiURL } from "../constants";
 
 export const getUserBySpotifyId = async (spotify_id: string) => {
     const options = {
-        url: `http://localhost:3001/users/getBySpotifyId/${spotify_id}`,
+        url: `${apiURL}/users/getBySpotifyId/${spotify_id}`,
         method: "GET"
     }
 
@@ -14,7 +15,7 @@ export const getUserBySpotifyId = async (spotify_id: string) => {
 export const createUser = async (userInfo: UserInfo) => {
     console.log(userInfo)
     const options = {
-        url: `http://localhost:3001/users/create`,
+        url: `${apiURL}/users/create`,
         method: "POST",
         data: {
             spotifyId: userInfo.id,
@@ -27,9 +28,8 @@ export const createUser = async (userInfo: UserInfo) => {
 }
 
 export const addSongToHistory = async (song: Song, reaction: string) => {
-
     const options = {
-        url: `http://localhost:3001/users/createHistoryItem/${localStorage.getItem('user_id')}`,
+        url: `${apiURL}/users/createHistoryItem/${localStorage.getItem('user_id')}`,
         method: "POST",
         data: {
             title: song.name,
@@ -45,3 +45,13 @@ export const addSongToHistory = async (song: Song, reaction: string) => {
     const response = await axios(options)
     return response.data
 }     
+
+export const getHistoryFromUser = async (user_id: number): Promise<HistoryItem[]> => {
+    const options = {
+        url: `${apiURL}/users/getHistoryItems/${user_id}`,
+        method: "GET"
+    }
+
+    const response = await axios(options)
+    return response.data
+}

@@ -1,7 +1,8 @@
 import styles from './Navbar.module.css'
 import SongleSign from '../songle-sign/SongleSign'
 import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
+import { useState, useEffect, useRef, use } from 'react'
 import HomeIcon from '../icons/HomeIcon'
 import ClockIcon from '../icons/ClockIcon'
 import BookIcon from '../icons/BookIcons'
@@ -42,6 +43,8 @@ const Navbar = () => {
 	const [settingsHover, setSettingsHover] = useState<boolean>(false)
 	const [logoutHover, setLogoutHover] = useState<boolean>(false)
 
+	const router = useRouter()
+
 	return (
 		<div className={styles.container}>
 			<SongleSign notAnimated />
@@ -70,19 +73,19 @@ const Navbar = () => {
 								</div>
 							</div>
 							<div className={styles.links}>
-								<div className={styles["link-item"]} onMouseEnter={() => setHomeHover(true)} onMouseLeave={() => setHomeHover(false)}>
+								<div className={styles["link-item"]} onMouseEnter={() => setHomeHover(true)} onMouseLeave={() => setHomeHover(false)} onClick={() => router.push('/')}>
 									<div className={styles["icon-container"]}>
 										<HomeIcon stroke={homeHover ? "#1db954" : "#ffffff"} />
 									</div>
 									<h2 className={styles["link-title"]} style={{ color: homeHover ? "#1db954" : "#ffffff" }}>Home</h2>
 								</div>
-								<div className={styles["link-item"]} onMouseEnter={() => setHistoryHover(true)} onMouseLeave={() => setHistoryHover(false)}>
+								<div className={styles["link-item"]} onMouseEnter={() => setHistoryHover(true)} onMouseLeave={() => setHistoryHover(false)} onClick={() => router.push('/history')}>
 									<div className={styles["icon-container"]}>
 										<ClockIcon stroke={historyHover ? "#1db954" : "#ffffff"} />
 									</div>
 									<h2 className={styles["link-title"]} style={{ color: historyHover ? "#1db954" : "#ffffff" }}>History</h2>
 								</div>
-								<div className={styles["link-item"]} onMouseEnter={() => setPlaylistHover(true)} onMouseLeave={() => setPlaylistHover(false)}>
+								<div className={styles["link-item"]} onMouseEnter={() => setPlaylistHover(true)} onMouseLeave={() => setPlaylistHover(false)} onClick={() => router.push('/my-playlist')}>
 									<div className={styles["icon-container"]}>
 										<BookIcon stroke={playlistHover ? "#1db954" : "#ffffff"} />
 									</div>
