@@ -55,9 +55,10 @@
     text-overflow: ellipsis;
 }
 
-.color {
+.album-icon-container {
     height: 50px;
     width: 50px;
+    position: relative;
     margin-right: 0.5rem;
 }
 
@@ -82,26 +83,26 @@
 }
 
 .title {
-    width: 30%;
+    width: 50%;
     display: flex;
     padding-right: 1rem;
 }
 
 .description {
-    width: 50%;
+    width: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
     padding-right: 3rem;
     font-family: "Outfit", sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
+    color: #626262;
 }
 
 .coordinates {
-    width: 15%;
-    font-family: "Outfit", sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
+    width: 10%;
+    display: flex;
+    justify-content: center;
 }
 
 .edit-icon-container { 

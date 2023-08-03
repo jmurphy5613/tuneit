@@ -20,14 +20,14 @@ const Play = () => {
     const [startedPlaying, setStartedPlaying] = useState(false)
     const [shouldPlay, setShouldPlay] = useState(true)
 
-    const [songs, setSongs] = useState<Song[]>([])
+    const [songs, setSongs] = useState<Song[]>()
 
     const nextSong = () => {
         setCurrentIndex(currentIndex + 1)
     }
 
     const reactToSong = async () => {
-        if(!lastSongDecision) return
+        if(!lastSongDecision || !songs) return
         const currentSong = songs[currentIndex]
         await addSongToHistory(currentSong, lastSongDecision)
     }
