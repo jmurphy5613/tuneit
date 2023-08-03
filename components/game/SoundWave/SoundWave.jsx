@@ -30,7 +30,7 @@ const WaveSurferPlayer = (props) => {
     const containerRef = useRef()
     const [isPlaying, setIsPlaying] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
-    const wavesurfer = useWavesurfer(containerRef, props)
+    const wavesurfer = useWavesurfer(containerRef, props.options)
 
     // On play button click
     const onPlayClick = useCallback(() => {
@@ -42,16 +42,7 @@ const WaveSurferPlayer = (props) => {
         wavesurfer.isPlaying() && wavesurfer.pause()
     }, [wavesurfer])
 
-    useEffect(() => {
-        console.log(props.shouldPlay)
-        if (!wavesurfer) return
 
-        if (props.shouldPlay) {
-            wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play()
-        } else {
-            wavesurfer.isPlaying() && wavesurfer.pause()
-        }
-    }, [props.shouldPlay])
 
     // Initialize wavesurfer when the container mounts
     // or any of the props change
@@ -69,7 +60,6 @@ const WaveSurferPlayer = (props) => {
                 if(props.shouldPlay) {
                     wavesurfer.play()
                 }
-                wavesurfer.setTime(currentTime)
             }) 
         ]
 
