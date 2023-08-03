@@ -1,13 +1,10 @@
 import axios from "axios";
-import { UserInfo } from "../types";
+import { Song, UserInfo } from "../types";
 
 export const getUserBySpotifyId = async (spotify_id: string) => {
     const options = {
         url: `http://localhost:3001/users/getBySpotifyId/${spotify_id}`,
-        method: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        }
+        method: "GET"
     }
 
     const response = await axios(options)
@@ -19,9 +16,6 @@ export const createUser = async (userInfo: UserInfo) => {
     const options = {
         url: `http://localhost:3001/users/create`,
         method: "POST",
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        },
         data: {
             spotifyId: userInfo.id,
             displayName: userInfo.display_name
@@ -31,3 +25,23 @@ export const createUser = async (userInfo: UserInfo) => {
     const response = await axios(options)
     return response.data
 }
+
+export const addSongToHistory = async (song: Song, reaction: string) => {
+
+    const options = {
+        url: `http://localhost:3001/users/createHistoryItem/${localStorage.getItem('user_id')}`,
+        method: "POST",
+        data: {
+            title: song.name,
+            artist: song.artists[0].name,
+            album: song.album.name,
+            albumArt: song.album.images[0].url,
+            uri: song.uri,
+            liked: reaction === 'like' ? true : false,
+            duration: song.duration_ms
+        }
+    }
+
+    const response = await axios(options)
+    return response.data
+}     

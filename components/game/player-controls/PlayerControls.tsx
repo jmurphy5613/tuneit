@@ -6,7 +6,7 @@ interface PlayerControlsProps {
     nextSong: () => void,
     setLastSongDecision: (decision: 'yes' | 'no' | null) => void,
     setShouldPlay: (state: boolean) => void,
-    shouldPlay: boolean
+    shouldPlay: boolean,
 }
 
 const PlayerControls: React.FC<PlayerControlsProps> = ({ nextSong, setLastSongDecision, setShouldPlay, shouldPlay }) => {

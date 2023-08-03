@@ -51,3 +51,4 @@ export const getRecommendations = async (seedTracks: Song[]) => {
     const filteredTracks = response.data.tracks.filter((track: Song) => track.preview_url !== null)
     return filteredTracks
 }
+

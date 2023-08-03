@@ -10,14 +10,17 @@ export interface Song {
     album: {
         images: Array<{
             url: string
-        }>
+        }>,
+        name: string
     },
     name: string,
     artists: Array<{
         name: string
     }>,
     preview_url: string,
-    id: string
+    id: string,
+    uri: string,
+    duration_ms: number
 }
 
 export interface UserItem {

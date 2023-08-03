@@ -7,6 +7,7 @@ import WaveSurferPlayer from '@/components/game/SoundWave/SoundWave'
 import Navbar from '@/components/navbar/Navbar'
 import { getRecommendations, getTopTracks } from '@/utils/requests/spotify'
 import { Song } from '@/utils/types'
+import { addSongToHistory } from '@/utils/requests/users'
 
 
 
@@ -25,6 +26,12 @@ const Play = () => {
         setCurrentIndex(currentIndex + 1)
     }
 
+    const reactToSong = async () => {
+        if(!lastSongDecision) return
+        const currentSong = songs[currentIndex]
+        await addSongToHistory(currentSong, lastSongDecision)
+    }
+
     // const songs = [
     //     tempSong,
     //     tempSong2,
@@ -39,6 +46,11 @@ const Play = () => {
         let recommendations = await getRecommendations(topTracks)
         setSongs(recommendations)
     }
+
+    useEffect(() => {
+        if (currentIndex === -1) return
+        reactToSong()
+    }, [lastSongDecision])
 
     useEffect(() => {
         fetchSongs()

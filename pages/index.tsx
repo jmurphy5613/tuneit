@@ -21,6 +21,7 @@ export default function Home() {
 		localStorage.setItem('expires_at', JSON.stringify(new Date(Date.now() + 3600 * 1000)))
 		const userData = await getUserData(authData.access_token)
 		const tuneItUser = await getUserBySpotifyId(userData.id)
+		localStorage.setItem('user_id', tuneItUser.id)
 
 		console.log(tuneItUser, !tuneItUser)
 		if (tuneItUser.message) {
