@@ -30,7 +30,7 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
     const [hoveringIcon, setHoveringIcon] = useState(false)
 
     useEffect(() => {
-        if (currentIndex !== index) return
+        if (currentIndex-1 !== index) return
         if (lastSongDecision === 'yes') {
             setX(1000)
             setY(0)
