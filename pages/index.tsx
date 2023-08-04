@@ -44,10 +44,12 @@ export default function Home() {
 	useEffect(() => {
 		const access_token = localStorage.getItem('access_token')
 		const expires_at = localStorage.getItem('expires_at')
-		if (access_token && expires_at && new Date(expires_at) > new Date()) {
+		if (access_token && expires_at && new Date(JSON.parse(expires_at)) > new Date()) {
 			setIsLoggedIn(true)
+			console.log('you are logged in')
 		} else {
 			setIsLoggedIn(false)
+			console.log('you are not logged in')
 		}
 	}, [])
 
@@ -57,7 +59,7 @@ export default function Home() {
 	return (
 		<div className={styles.container}>
 			<SongleSign />
-			<HomeButtons isLoggedIn={isLoggedIn} router={router} />
+			<HomeButtons isLoggedIn={isLoggedIn} router={router} setIsLoggedIn={setIsLoggedIn} />
 			<CreatorCredit />
 			<RecentlyPlayed />
 		</div>
