@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { auth, getAccessToken } from '@/utils/requests/auth'
 import { useEffect, useState } from 'react'
 import { createUser, getUserBySpotifyId } from '@/utils/requests/users'
-import { getUserData } from '@/utils/requests/spotify'
+import { createPlaylist, getUserData, uploadPlaylistImage } from '@/utils/requests/spotify'
 import { UserInfo } from '@/utils/types'
 
 export default function Home() {
@@ -23,9 +23,12 @@ export default function Home() {
 		const tuneItUser = await getUserBySpotifyId(userData.id)
 		localStorage.setItem('user_id', tuneItUser.id)
 
-		console.log(tuneItUser, !tuneItUser)
+
 		if (tuneItUser.message) {
-			await createUser(userData)
+			const user = await createUser(userData)
+			const playlist = await createPlaylist(user.spotifyId)
+			localStorage.setItem('playlist_id', playlist.id)
+			await uploadPlaylistImage(playlist.id)
 		}
 		router.push('/play')
 	}
@@ -46,10 +49,8 @@ export default function Home() {
 		const expires_at = localStorage.getItem('expires_at')
 		if (access_token && expires_at && new Date(JSON.parse(expires_at)) > new Date()) {
 			setIsLoggedIn(true)
-			console.log('you are logged in')
 		} else {
 			setIsLoggedIn(false)
-			console.log('you are not logged in')
 		}
 	}, [])
 

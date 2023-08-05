@@ -1,5 +1,5 @@
 import axios from "axios";
-import { HistoryItem, Song, UserInfo } from "../types";
+import { HistoryItem, Song, User, UserInfo } from "../types";
 import { apiURL } from "../constants";
 
 export const getUserBySpotifyId = async (spotify_id: string) => {
@@ -12,7 +12,7 @@ export const getUserBySpotifyId = async (spotify_id: string) => {
     return response.data
 }
 
-export const createUser = async (userInfo: UserInfo) => {
+export const createUser = async (userInfo: UserInfo): Promise<User> => {
     console.log(userInfo)
     const options = {
         url: `${apiURL}/users/create`,

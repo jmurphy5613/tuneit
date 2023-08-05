@@ -9,7 +9,7 @@ export const auth = async (router: NextRouter) => {
 	URL += "&response_type=code"
 	URL += "&redirect_uri=" + url
 	URL += "&show_dialog=true"
-	URL += "&scope=user-read-private user-read-email user-top-read user-read-recently-played"
+	URL += "&scope=user-read-private user-read-email user-top-read user-read-recently-played playlist-modify-private playlist-modify-private ugc-image-upload"
 	router.push(URL);
 };
 

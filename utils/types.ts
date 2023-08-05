@@ -58,3 +58,9 @@ export interface HistoryItem {
     liked: boolean,
     duration: number
 }
+
+export interface User {
+    id: number,
+    spotifyId: string,
+    displayName: string
+}

@@ -73,6 +73,7 @@ const Song: React.FC<SongProps> = ({ song, currentIndex, lastSongDecision, index
                     <div className={styles["external-icon-container"]}
                         onMouseEnter={() => setHoveringIcon(true)}
                         onMouseLeave={() => setHoveringIcon(false)}
+                        onClick={() => window.open(song.uri)}
                     >
                         <SpotifyIcon fill={hoveringIcon ? '#1db954' : '#626262'} />
                     </div>
