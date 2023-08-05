@@ -5,14 +5,17 @@ import { useEffect, useState } from 'react'
 import PlayerControls from '@/components/game/player-controls/PlayerControls'
 import WaveSurferPlayer from '@/components/game/SoundWave/SoundWave'
 import Navbar from '@/components/navbar/Navbar'
-import { getRecommendations, getTopTracks } from '@/utils/requests/spotify'
+import { addTrackToPlaylist, getRecommendations, getTopTracks } from '@/utils/requests/spotify'
 import { Song } from '@/utils/types'
 import { addSongToHistory } from '@/utils/requests/users'
+import { logout } from '@/utils/localRequests'
+import { useRouter } from 'next/router'
 
 
 
 const Play = () => {
 
+    const router = useRouter()
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [lastSongDecision, setLastSongDecision] = useState<'yes' | 'no' | null>(null)
@@ -30,6 +33,12 @@ const Play = () => {
         if(!lastSongDecision || !songs) return
         const currentSong = songs[currentIndex]
         await addSongToHistory(currentSong, lastSongDecision)
+
+        if(lastSongDecision === 'yes') {
+            const playlist_id = localStorage.getItem('playlist_id')
+            if(!playlist_id) return
+            await addTrackToPlaylist(playlist_id, currentSong.uri)
+        }
     }
 
     // const songs = [
@@ -53,7 +62,12 @@ const Play = () => {
     }, [lastSongDecision])
 
     useEffect(() => {
-        fetchSongs()
+        const token_expires_at = localStorage.getItem('expires_at')
+        if (!token_expires_at || new Date(JSON.parse(token_expires_at)) < new Date()) {
+            logout(router, '/')
+        } else {
+            fetchSongs()
+        }
     }, [])
 
     if(!songs) return <></>
