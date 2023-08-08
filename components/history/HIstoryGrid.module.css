@@ -33,9 +33,15 @@
     justify-content: center;
 }
 
-.reaction-icon-container {
+.reaction-icon-container-label {
     height: 50px;
     width: 50px;
+    position: relative;
+}
+
+.reaction-icon-container {
+    height: 40px;
+    width: 40px;
     position: relative;
 }
 
@@ -45,7 +51,7 @@
     position: relative;
 }
 
-.location {
+.song {
     width: 100%;
     display: flex;
     margin-top: 0.75rem;
@@ -56,8 +62,8 @@
 }
 
 .album-icon-container {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     position: relative;
     margin-right: 0.5rem;
 }
@@ -68,9 +74,9 @@
 }
 
 .name {
-    line-height: 30px;
+    line-height: 20px;
     font-family: "Outfit", sans-serif;
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -94,7 +100,7 @@
     text-overflow: ellipsis;
     padding-right: 3rem;
     font-family: "Outfit", sans-serif;
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 400;
     color: #626262;
 }
@@ -105,10 +111,3 @@
     justify-content: center;
 }
 
-.edit-icon-container { 
-    position: relative;
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    margin-left: auto;
-}

@@ -16,20 +16,20 @@ const HistoryGrid: React.FC<HistoryGridProps> = ({ songs }) => {
                 <h1 className={styles["title-label"]}>Title</h1>
                 <h1 className={styles["album-label"]}>Album</h1>
                 <div className={styles["reaction-label"]}>
-                    <div className={styles["reaction-icon-container"]}>
+                    <div className={styles["reaction-icon-container-label"]}>
                         <CheckIcon stroke='#1db954' />
                     </div>
                     <div className={styles["slash-icon-container"]}>
                         <SlashIcon stroke='#ffffff' />
                     </div>
-                    <div className={styles["reaction-icon-container"]}>
+                    <div className={styles["reaction-icon-container-label"]}>
                         <CrossIcon stroke='#a12828' />
                     </div>
                 </div>
             </div>
             <div className={styles.divider} />
             {songs.map((song: HistoryItem, index: number) => (
-                <div className={styles.location} key={index}>
+                <div className={styles.song} key={index}>
                     <div className={styles.title}>
                         <div className={styles["album-icon-container"]}>
                             <Image

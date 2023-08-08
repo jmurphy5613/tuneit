@@ -9,6 +9,7 @@ import BookIcon from '../icons/BookIcons'
 import GearIcon from '../icons/GearIcon'
 import LeaveIcon from '../icons/LeaveIcon'
 import { logout } from '@/utils/localRequests'
+import PlayIcon from '../icons/PlayIcon'
 
 
 
@@ -43,6 +44,7 @@ const Navbar = () => {
 	const [playlistHover, setPlaylistHover] = useState<boolean>(false)
 	const [settingsHover, setSettingsHover] = useState<boolean>(false)
 	const [logoutHover, setLogoutHover] = useState<boolean>(false)
+	const [playHover, setPlayHover] = useState<boolean>(false)
 
 	const router = useRouter()
 
@@ -79,6 +81,12 @@ const Navbar = () => {
 										<HomeIcon stroke={homeHover ? "#1db954" : "#ffffff"} />
 									</div>
 									<h2 className={styles["link-title"]} style={{ color: homeHover ? "#1db954" : "#ffffff" }}>Home</h2>
+								</div>
+								<div className={styles["link-item"]} onMouseEnter={() => setPlayHover(true)} onMouseLeave={() => setPlayHover(false)} onClick={() => router.push('/play')}>
+									<div className={styles["icon-container"]}>
+										<PlayIcon stroke={playHover ? "#1db954" : "#ffffff"} />
+									</div>
+									<h2 className={styles["link-title"]} style={{ color: playHover ? "#1db954" : "#ffffff" }}>Play</h2>
 								</div>
 								<div className={styles["link-item"]} onMouseEnter={() => setHistoryHover(true)} onMouseLeave={() => setHistoryHover(false)} onClick={() => router.push('/history')}>
 									<div className={styles["icon-container"]}>

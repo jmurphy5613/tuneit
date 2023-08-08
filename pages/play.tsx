@@ -21,7 +21,7 @@ const Play = () => {
     const [lastSongDecision, setLastSongDecision] = useState<'yes' | 'no' | null>(null)
 
     const [startedPlaying, setStartedPlaying] = useState(false)
-    const [shouldPlay, setShouldPlay] = useState(true)
+    const [shouldPlay, setShouldPlay] = useState(false)
 
     const [songs, setSongs] = useState<Song[]>()
 
@@ -59,7 +59,6 @@ const Play = () => {
     }
 
     useEffect(() => {
-        console.log('triggered')
         if (currentIndex === -1) return
         reactToSong()
     }, [currentIndex])
