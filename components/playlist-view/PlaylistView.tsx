@@ -3,6 +3,7 @@ import styles from './PlaylistView.module.css'
 import Image from "next/image"
 import RemoveIcon from "../icons/RemoveIcon"
 import { useState } from "react"
+import { removeTrackFromPlaylist } from "@/utils/requests/spotify"
 
 
 interface PlaylistViewProps {
@@ -12,6 +13,11 @@ interface PlaylistViewProps {
 const PlaylistView: React.FC<PlaylistViewProps> = ({ songs }) => {
 
     const [removeButtonHoverId, setRemoveButtonHoverId] = useState<number | null>(null)
+
+    const removeSongById = async (id: number) => {
+        await removeTrackFromPlaylist(songs[id].uri)
+        songs.splice(id, 1)
+    }
 
     return (
         <>
@@ -40,7 +46,11 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ songs }) => {
                     </div>
                     <h2 className={styles.description}>{song.album.name}</h2>
                     <div className={styles.coordinates}>
-                        <div className={styles["reaction-icon-container"]} onMouseEnter={() => setRemoveButtonHoverId(index)} onMouseLeave={() => setRemoveButtonHoverId(null)}>
+                        <div className={styles["reaction-icon-container"]} 
+                            onMouseEnter={() => setRemoveButtonHoverId(index)} 
+                            onMouseLeave={() => setRemoveButtonHoverId(null)}
+                            onClick={() => removeSongById(index)}
+                        >
                             <RemoveIcon stroke="#a12828" fill={index === removeButtonHoverId ? "#A12828" : ""} linefill={index === removeButtonHoverId ? "#000000" : ""} />
                         </div>
                     </div>
