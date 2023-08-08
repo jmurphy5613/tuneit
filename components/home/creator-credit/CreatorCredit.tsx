@@ -13,7 +13,7 @@ const CreatorCredit = () => {
                 />
             </div>
             <div className={styles.content}>
-                <h1 className={styles.name}>Game by John Murphy</h1>
+                <h1 className={styles.name}>Created by John Murphy</h1>
                 <div style={{ display: 'flex' }}>
                     <div className={styles["icon-container"]}>
                         <svg width="100%" height="100%" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">

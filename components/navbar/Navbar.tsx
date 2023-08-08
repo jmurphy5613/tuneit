@@ -100,12 +100,12 @@ const Navbar = () => {
 									</div>
 									<h2 className={styles["link-title"]} style={{ color: playlistHover ? "#1db954" : "#ffffff" }}>My Playlist</h2>
 								</div>
-								<div className={styles["link-item"]} onMouseEnter={() => setSettingsHover(true)} onMouseLeave={() => setSettingsHover(false)}>
+								{/* <div className={styles["link-item"]} onMouseEnter={() => setSettingsHover(true)} onMouseLeave={() => setSettingsHover(false)}>
 									<div className={styles["icon-container"]}>
 										<GearIcon stroke={settingsHover ? "#1db954" : "#ffffff"} />
 									</div>
 									<h2 className={styles["link-title"]} style={{ color: settingsHover ? "#1db954" : "#ffffff" }}>Settings</h2>
-								</div>
+								</div> */}
 
 								<div className={styles.divider} />
 
