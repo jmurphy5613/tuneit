@@ -30,13 +30,15 @@ const Play = () => {
     }
 
     const reactToSong = async () => {
+        console.log(lastSongDecision, currentIndex)
         if(!lastSongDecision || !songs) return
-        const currentSong = songs[currentIndex]
+        const currentSong = songs[currentIndex-1]
         await addSongToHistory(currentSong, lastSongDecision)
 
         if(lastSongDecision === 'yes') {
             const playlist_id = localStorage.getItem('playlist_id')
             if(!playlist_id) return
+            console.log(currentSong, currentIndex)
             await addTrackToPlaylist(playlist_id, currentSong.uri)
         }
     }
@@ -57,9 +59,10 @@ const Play = () => {
     }
 
     useEffect(() => {
+        console.log('triggered')
         if (currentIndex === -1) return
         reactToSong()
-    }, [lastSongDecision])
+    }, [currentIndex])
 
     useEffect(() => {
         const token_expires_at = localStorage.getItem('expires_at')

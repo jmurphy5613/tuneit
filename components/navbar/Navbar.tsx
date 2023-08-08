@@ -8,6 +8,7 @@ import ClockIcon from '../icons/ClockIcon'
 import BookIcon from '../icons/BookIcons'
 import GearIcon from '../icons/GearIcon'
 import LeaveIcon from '../icons/LeaveIcon'
+import { logout } from '@/utils/localRequests'
 
 
 
@@ -100,7 +101,9 @@ const Navbar = () => {
 
 								<div className={styles.divider} />
 
-								<div className={styles["link-item"]} onMouseEnter={() => setLogoutHover(true)} onMouseLeave={() => setLogoutHover(false)}>
+								<div className={styles["link-item"]} onMouseEnter={() => setLogoutHover(true)} onMouseLeave={() => setLogoutHover(false)} onClick={() => {
+									logout(router, '/')
+								}}>
 									<div className={styles["icon-container"]}>
 										<LeaveIcon stroke={logoutHover ?  "#a12828" :"#ffffff"} />
 									</div>

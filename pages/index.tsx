@@ -22,12 +22,15 @@ export default function Home() {
 		const userData = await getUserData(authData.access_token)
 		const tuneItUser = await getUserBySpotifyId(userData.id)
 		localStorage.setItem('user_id', tuneItUser.id)
+		localStorage.setItem('playlist_id', tuneItUser.playlistId)
 
 
 		if (tuneItUser.message) {
-			const user = await createUser(userData)
-			const playlist = await createPlaylist(user.spotifyId)
+			const playlist = await createPlaylist(userData.id)
+			console.log(playlist)
+			const user = await createUser(userData, playlist.id)
 			localStorage.setItem('playlist_id', playlist.id)
+			localStorage.setItem('user_id', JSON.stringify(user.id))
 			await uploadPlaylistImage(playlist.id)
 		}
 		router.push('/play')

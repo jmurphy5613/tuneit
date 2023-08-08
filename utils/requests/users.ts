@@ -12,14 +12,15 @@ export const getUserBySpotifyId = async (spotify_id: string) => {
     return response.data
 }
 
-export const createUser = async (userInfo: UserInfo): Promise<User> => {
+export const createUser = async (userInfo: UserInfo, playlist_id: string): Promise<User> => {
     console.log(userInfo)
     const options = {
         url: `${apiURL}/users/create`,
         method: "POST",
         data: {
             spotifyId: userInfo.id,
-            displayName: userInfo.display_name
+            displayName: userInfo.display_name,
+            playlistId: playlist_id
         }
     }
 

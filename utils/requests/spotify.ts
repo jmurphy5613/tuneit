@@ -94,9 +94,8 @@ export const addTrackToPlaylist = async (playlist_id: string, track_uri: string)
             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             'Content-Type': 'application/json'
         },
-        data: {
-            playlist_id: playlist_id,
-            uris: [track_uri]
+        params: {
+            uris: track_uri
         }
     }
 
