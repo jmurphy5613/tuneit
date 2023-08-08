@@ -1,6 +1,8 @@
-import { HistoryItem, Song } from "@/utils/types"
+import { Song } from "@/utils/types"
 import styles from './PlaylistView.module.css'
 import Image from "next/image"
+import RemoveIcon from "../icons/RemoveIcon"
+import { useState } from "react"
 
 
 interface PlaylistViewProps {
@@ -9,7 +11,7 @@ interface PlaylistViewProps {
 
 const PlaylistView: React.FC<PlaylistViewProps> = ({ songs }) => {
 
-    console.log(songs)
+    const [removeButtonHoverId, setRemoveButtonHoverId] = useState<number | null>(null)
 
     return (
         <>
@@ -38,7 +40,8 @@ const PlaylistView: React.FC<PlaylistViewProps> = ({ songs }) => {
                     </div>
                     <h2 className={styles.description}>{song.album.name}</h2>
                     <div className={styles.coordinates}>
-                        <div className={styles["reaction-icon-container"]}>
+                        <div className={styles["reaction-icon-container"]} onMouseEnter={() => setRemoveButtonHoverId(index)} onMouseLeave={() => setRemoveButtonHoverId(null)}>
+                            <RemoveIcon stroke="#a12828" fill={index === removeButtonHoverId ? "#A12828" : ""} linefill={index === removeButtonHoverId ? "#000000" : ""} />
                         </div>
                     </div>
 

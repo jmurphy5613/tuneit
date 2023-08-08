@@ -44,6 +44,9 @@
     width: 40px;
     position: relative;
 }
+.reaction-icon-container:hover {
+    cursor: pointer;
+}
 
 .slash-icon-container {
     height: 50px;
