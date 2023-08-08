@@ -102,3 +102,45 @@ export const addTrackToPlaylist = async (playlist_id: string, track_uri: string)
     const response = await axios(options)
     return response.data
 }
+
+export const getUsersPlaylistItems = async (): Promise<Song []> => {
+    const options = {
+        url: `https://api.spotify.com/v1/playlists/${localStorage.getItem('playlist_id')}/tracks`,
+        method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            'Content-Type': 'application/json'
+        },
+        params: {
+            limit: 100
+        }
+    }
+
+    const response = await axios(options)
+    const tracks: Song[] = []
+    for (const item of response.data.items) {
+        tracks.push(item.track)
+    }
+    return tracks
+}
+
+export const removeTrackFromPlaylist = async (track_uri: string) => {
+    const options = {
+        url: `https://api.spotify.com/v1/playlists/${localStorage.getItem('playlist_id')}/tracks`,
+        method: "DELETE",
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            'Content-Type': 'application/json'
+        },
+        data: {
+            tracks: [
+                {
+                    uri: track_uri
+                }
+            ]
+        }
+    }
+
+    const response = await axios(options)
+    return response.data
+}
