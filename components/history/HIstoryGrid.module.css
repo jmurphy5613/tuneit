@@ -63,7 +63,7 @@
 
 .album-icon-container {
     height: 40px;
-    width: 40px;
+    min-width: 40px;
     position: relative;
     margin-right: 0.5rem;
 }
@@ -92,6 +92,8 @@
     width: 50%;
     display: flex;
     padding-right: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .description {
@@ -111,3 +113,21 @@
     justify-content: center;
 }
 
+@media screen and (max-width: 600px) {
+    .album-label {
+        display: none;
+    }
+    .title-label {
+        font-size: 1.5rem;
+    }
+    .title {
+        width: 90%;
+    }
+    .description {
+        display: none;
+    }
+    .headers {
+        justify-content: space-between;
+        align-items: center;
+    }
+}
