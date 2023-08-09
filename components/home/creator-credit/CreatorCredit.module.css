@@ -13,6 +13,14 @@
     z-index: 1;
 }
 
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+    }
+}
+    
+
 .pfp-container {
     width: 75px;
     height: 75px;

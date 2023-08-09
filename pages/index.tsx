@@ -8,9 +8,11 @@ import { auth, getAccessToken } from '@/utils/requests/auth'
 import { useEffect, useState } from 'react'
 import { createUser, getUserBySpotifyId } from '@/utils/requests/users'
 import { createPlaylist, getUserData, uploadPlaylistImage } from '@/utils/requests/spotify'
-import { UserInfo } from '@/utils/types'
+import { useMediaQuery } from 'react-responsive'
 
 export default function Home() {
+
+	const isMobile = useMediaQuery({ query: '(max-width: 600px)' })
 
 	const router = useRouter()
 
@@ -62,10 +64,10 @@ export default function Home() {
 
 	return (
 		<div className={styles.container}>
-			<SongleSign />
+			{isMobile ? <SongleSign mobile /> : <SongleSign />}
 			<HomeButtons isLoggedIn={isLoggedIn} router={router} setIsLoggedIn={setIsLoggedIn} />
 			<CreatorCredit />
-			<RecentlyPlayed />
+			{!isMobile && <RecentlyPlayed />}
 		</div>
 	)
 }
