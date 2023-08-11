@@ -128,3 +128,11 @@
     background-color: #626262;
     margin-top: 0.5rem;
 }
+
+@media screen and (max-width: 385px)  {
+    .right-container {
+        width: 100%;
+        display: flex;
+        justify-content: right;
+    }
+}
