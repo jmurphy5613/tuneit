@@ -6,9 +6,6 @@ interface SongleSignProps {
 }
 
 const SongleSign: React.FC<SongleSignProps> = ({ notAnimated, mobile }) => {
-
-    console.log(mobile)
-
     if (mobile) {
         return (
             <div className={styles["mobile-container"]}>

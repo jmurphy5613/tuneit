@@ -1,8 +1,29 @@
 import axios from "axios";
 import { Song, UserInfo } from "../types";
-import { playlistImageBase64 } from "../constants";
+import { playlistImageBase64, url } from "../constants";
+
+export const verifyAccessToken = async () => {
+    const access_token = localStorage.getItem('access_token')
+    const expires_at = localStorage.getItem('expires_at')
+    const refresh_token = localStorage.getItem('refresh_token')
+    if(!access_token || !expires_at || !refresh_token) return
+    if(new Date(JSON.parse(expires_at)) < new Date()) {
+        const options = {
+            url: `${url}/api/getRefreshToken`,
+            method: "GET",
+            params: {
+                refresh_token: refresh_token
+            }
+        }
+        const response = await axios(options)
+        console.log(response)
+        localStorage.setItem('access_token', response.data.response.access_token)
+        localStorage.setItem('expires_at', JSON.stringify(new Date(Date.now() + response.data.response.expires_in * 1000)))
+    }
+}
 
 export const getUserData = async (access_token?: string): Promise<UserInfo> => {
+    await verifyAccessToken()
     const options = {
         url: "https://api.spotify.com/v1/me",
         method: "GET",
@@ -16,6 +37,7 @@ export const getUserData = async (access_token?: string): Promise<UserInfo> => {
 }
 
 export const getTopTracks = async (access_token?: string): Promise<Song[]> => {
+    await verifyAccessToken()
     const options = {
         url: "https://api.spotify.com/v1/me/top/tracks",
         method: "GET",
@@ -34,6 +56,7 @@ export const getTopTracks = async (access_token?: string): Promise<Song[]> => {
 }
 
 export const getRecommendations = async (seedTracks: Song[]) => {
+    await verifyAccessToken()
     const options = {
         url: "https://api.spotify.com/v1/recommendations",
         method: "GET",
@@ -54,6 +77,7 @@ export const getRecommendations = async (seedTracks: Song[]) => {
 }
 
 export const createPlaylist = async (spotify_id: string) => {
+    await verifyAccessToken()
     const options = {
         url: `https://api.spotify.com/v1/users/${spotify_id}/playlists`,
         method: "POST",
@@ -72,6 +96,7 @@ export const createPlaylist = async (spotify_id: string) => {
 }
 
 export const uploadPlaylistImage = async (playlist_id: string) => {
+    await verifyAccessToken()
     const options = {
         url: `https://api.spotify.com/v1/playlists/${playlist_id}/images`,
         method: "PUT",
@@ -87,6 +112,7 @@ export const uploadPlaylistImage = async (playlist_id: string) => {
 }
 
 export const addTrackToPlaylist = async (playlist_id: string, track_uri: string) => {
+    await verifyAccessToken()
     const options = {
         url: `https://api.spotify.com/v1/playlists/${playlist_id}/tracks`,
         method: "POST",
@@ -104,6 +130,7 @@ export const addTrackToPlaylist = async (playlist_id: string, track_uri: string)
 }
 
 export const getUsersPlaylistItems = async (): Promise<Song []> => {
+    await verifyAccessToken()
     const options = {
         url: `https://api.spotify.com/v1/playlists/${localStorage.getItem('playlist_id')}/tracks`,
         method: "GET",
@@ -125,6 +152,7 @@ export const getUsersPlaylistItems = async (): Promise<Song []> => {
 }
 
 export const removeTrackFromPlaylist = async (track_uri: string) => {
+    await verifyAccessToken()
     const options = {
         url: `https://api.spotify.com/v1/playlists/${localStorage.getItem('playlist_id')}/tracks`,
         method: "DELETE",
