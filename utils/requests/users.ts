@@ -38,7 +38,7 @@ export const addSongToHistory = async (song: Song, reaction: string) => {
             album: song.album.name,
             albumArt: song.album.images[0].url,
             uri: song.uri,
-            liked: reaction === 'like' ? true : false,
+            liked: reaction === 'yes' ? true : false,
             duration: song.duration_ms
         }
     }

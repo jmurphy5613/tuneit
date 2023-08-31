@@ -14,7 +14,7 @@ const History = () => {
 
     const fetchSongs = async (user_id: number) => {
         const songs = await getHistoryFromUser(user_id)
-        setSongs(songs)
+        setSongs(songs.reverse())
     }
 
     useEffect(() => {

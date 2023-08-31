@@ -1,5 +1,7 @@
-export const url = "http://localhost:3000"
-export const apiURL = "http://localhost:3001"
+// export const url = "http://localhost:3000"
+// export const apiURL = "http://localhost:3001"
+export const url = "https://tuneit.vercel.app"
+export const apiURL = "https://tuneit-backend-production.up.railway.app"
 
 
 
