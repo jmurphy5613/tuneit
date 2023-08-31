@@ -17,7 +17,7 @@ export const userItem: UserItem[] = [
 
 export const duplicatedUserItems = (users: UserItem[]) => {
     let duplicatedUsers: UserItem[] = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         duplicatedUsers = duplicatedUsers.concat(users)
     }
     return duplicatedUsers
