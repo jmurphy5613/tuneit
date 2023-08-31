@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
+import { url } from '@/utils/constants'
 
 type Data = {
   response: any
@@ -20,7 +21,7 @@ export default async function handler(
         },
         params: {
             code: req.query.code,
-            redirect_uri: 'http://localhost:3000',
+            redirect_uri: url,
             grant_type: 'authorization_code'
         }
     }
