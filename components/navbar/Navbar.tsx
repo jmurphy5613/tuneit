@@ -10,6 +10,7 @@ import GearIcon from '../icons/GearIcon'
 import LeaveIcon from '../icons/LeaveIcon'
 import { logout } from '@/utils/localRequests'
 import PlayIcon from '../icons/PlayIcon'
+import DownArrow from '../icons/DownArrow'
 
 
 
@@ -52,13 +53,21 @@ const Navbar = () => {
 		<div className={styles.container}>
 			<SongleSign notAnimated />
 			<div className={styles["right-container"]}>
-				<div className={styles["profile-image-container"]} ref={wrapperRef} onClick={() => setShowPopup(true)}>
-					<Image
-						src="/pfps/johntransparent.png"
-						alt="profile"
-						fill
-						style={{ borderRadius: '100%' }}
-					/>
+				<div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', position: 'relative' }} ref={wrapperRef} onClick={() => {
+					setShowPopup(true)
+					console.log("hi", showPopup)
+				}}>
+					<div className={styles["profile-image-container"]}  >
+						<Image
+							src="/pfps/johntransparent.png"
+							alt="profile"
+							fill
+							style={{ borderRadius: '100%' }}
+						/>
+					</div>
+					<div className={styles["down-arrow-container"]}>
+						<DownArrow />
+					</div>
 					{showPopup &&
 						<div className={styles.popup}>
 							<div className={styles.header}>
@@ -113,9 +122,9 @@ const Navbar = () => {
 									logout(router, '/')
 								}}>
 									<div className={styles["icon-container"]}>
-										<LeaveIcon stroke={logoutHover ?  "#a12828" :"#ffffff"} />
+										<LeaveIcon stroke={logoutHover ? "#a12828" : "#ffffff"} />
 									</div>
-									<h2 className={styles["link-title"]} style={{ color: logoutHover ?  "#a12828" :"#ffffff"  }}>Logout</h2>
+									<h2 className={styles["link-title"]} style={{ color: logoutHover ? "#a12828" : "#ffffff" }}>Logout</h2>
 								</div>
 
 

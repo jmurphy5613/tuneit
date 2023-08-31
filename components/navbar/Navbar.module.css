@@ -9,15 +9,26 @@
 .right-container {
     display: flex;
     align-items: center;
-    margin-right: 1rem;
+    margin-right: 2rem;
     z-index: 99;
+}
+
+@media screen and (max-width: 800px) {
+    .right-container {
+        margin-right: 1rem;
+    }
 }
 
 .profile-image-container {
     position: relative;
     height: 50px;
     width: 50px;
-    cursor: pointer;
+    }
+
+.down-arrow-container {
+    position: relative;
+    height: 20px;
+    width: 20px;
 }
 
 .link {
