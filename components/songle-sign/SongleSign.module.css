@@ -299,7 +299,7 @@
     }
 }
 
-@media screen and (max-width: 385px)  {
+@media screen and (max-width: 400px)  {
     .smaller-container {
         display: none;
     }

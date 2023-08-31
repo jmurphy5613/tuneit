@@ -140,7 +140,7 @@
     margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 385px)  {
+@media screen and (max-width: 400px)  {
     .right-container {
         width: 100%;
         display: flex;
