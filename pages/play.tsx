@@ -51,15 +51,6 @@ const Play = () => {
         }
     }
 
-    // const songs = [
-    //     tempSong,
-    //     tempSong2,
-    //     tempSong,
-    //     tempSong2,
-    //     tempSong,
-    //     tempSong2,
-    // ]
-
     const fetchSongs = async () => {
         const topTracks = await getTopTracks()
         let recommendations = await getRecommendations(topTracks)
