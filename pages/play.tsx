@@ -32,6 +32,14 @@ const Play = () => {
     const reactToSong = async () => {
         console.log(lastSongDecision, currentIndex)
         if(!lastSongDecision || !songs) return
+
+        //check if there is more than 1 song left, if not fetch more songs
+        if(currentIndex === songs.length - 10) {
+            const topTracks = await getTopTracks()
+            let recommendations = await getRecommendations(topTracks)
+            setSongs([...songs, ...recommendations])
+        }
+
         const currentSong = songs[currentIndex-1]
         await addSongToHistory(currentSong, lastSongDecision)
 
@@ -72,7 +80,9 @@ const Play = () => {
         }
     }, [])
 
-    if(!songs) return <></>
+    console.log(songs, currentIndex)
+
+    if(!songs || !songs[currentIndex]) return <></>
 
     return (
         <>
