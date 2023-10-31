@@ -62,5 +62,6 @@ export interface HistoryItem {
 export interface User {
     id: number,
     spotifyId: string,
-    displayName: string
+    displayName: string,
+    profilePicture: string
 }

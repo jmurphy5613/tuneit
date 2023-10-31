@@ -2,6 +2,15 @@ import axios from "axios";
 import { HistoryItem, Song, User, UserInfo } from "../types";
 import { apiURL } from "../constants";
 
+export const getAllUsers = async () : Promise<User[]> => {
+    const options = {
+        url: `${apiURL}/users/get-all`,
+        method: "GET"
+    }
+    const response = await axios(options)
+    return response.data
+}
+
 export const getUserBySpotifyId = async (spotify_id: string) => {
     const options = {
         url: `${apiURL}/users/getBySpotifyId/${spotify_id}`,
@@ -20,7 +29,8 @@ export const createUser = async (userInfo: UserInfo, playlist_id: string): Promi
         data: {
             spotifyId: userInfo.id,
             displayName: userInfo.display_name,
-            playlistId: playlist_id
+            playlistId: playlist_id,
+            profilePicture: userInfo.images[0].url || ""
         }
     }
 

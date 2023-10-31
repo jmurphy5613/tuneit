@@ -1,4 +1,4 @@
-import { UserItem, Song } from './types'
+import { UserItem, Song, User } from './types'
 
 export const userItem: UserItem[] = [
     {
@@ -15,9 +15,9 @@ export const userItem: UserItem[] = [
     }
 ]
 
-export const duplicatedUserItems = (users: UserItem[]) => {
-    let duplicatedUsers: UserItem[] = []
-    for (let i = 0; i < 6; i++) {
+export const duplicatedUserItems = (users: User[]) => {
+    let duplicatedUsers: User[] = []
+    for (let i = 0; i < 25; i++) {
         duplicatedUsers = duplicatedUsers.concat(users)
     }
     return duplicatedUsers

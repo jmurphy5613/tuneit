@@ -69,6 +69,7 @@ const Play = () => {
         } else {
             fetchSongs()
         }
+
     }, [])
 
     console.log(songs, currentIndex)
