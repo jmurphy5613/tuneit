@@ -21,6 +21,15 @@ export const getUserBySpotifyId = async (spotify_id: string) => {
     return response.data
 }
 
+export const getUserById = async (id: number) => {
+    const options = {
+        url: `${apiURL}/users/getById/${id}`,
+        method: "GET"
+    }
+    const response = await axios(options)
+    return response.data
+}
+
 export const createUser = async (userInfo: UserInfo, playlist_id: string): Promise<User> => {
     console.log(userInfo)
     const options = {

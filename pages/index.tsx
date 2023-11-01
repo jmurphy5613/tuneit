@@ -14,9 +14,11 @@ export default function Home() {
 
 	const isMobile = useMediaQuery({ query: '(max-width: 600px)' })
 
+
 	const router = useRouter()
 
 	const getToken = async (code: string) => {
+		setIsLoggedIn(true)
 		const authData = await getAccessToken(code)
 		localStorage.setItem('access_token', authData.access_token)
 		localStorage.setItem('refresh_token', authData.refresh_token)
@@ -35,11 +37,13 @@ export default function Home() {
 			localStorage.setItem('user_id', JSON.stringify(user.id))
 			await uploadPlaylistImage(playlist.id)
 		}
-		router.push('/play')
 	}
 
 	useEffect(() => {
 		if (router.isReady) {
+
+			//if user is already logged in do nothing
+			if(checkLoggedIn()) return
 			const code = router.query.code;
 			if (code) {
 				getToken(code as string)
@@ -49,14 +53,20 @@ export default function Home() {
 
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
 
-	useEffect(() => {
+	const checkLoggedIn = () => {
 		const access_token = localStorage.getItem('access_token')
 		const expires_at = localStorage.getItem('expires_at')
 		if (access_token && expires_at && new Date(JSON.parse(expires_at)) > new Date()) {
 			setIsLoggedIn(true)
+			return true
 		} else {
 			setIsLoggedIn(false)
+			return false
 		}
+	}
+
+	useEffect(() => {
+		checkLoggedIn()
 	}, [])
 
 	if (isLoggedIn === undefined) return <></>

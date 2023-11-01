@@ -20,10 +20,10 @@ const HomeButtons:React.FC<HomeButtonsProps> = ({ router, isLoggedIn, setIsLogge
                     <button className={styles.button} onClick={() => {
                         router.push('/play')
                     }}>Play</button>
-                    <button className={styles.button} onClick={() => {
+                    {/* <button className={styles.button} onClick={() => {
                         logout(router, '/')
                         setIsLoggedIn(false)
-                    }}>Signout</button>
+                    }}>Signout</button> */}
                 </>
             :
                 <>

@@ -11,6 +11,8 @@ import LeaveIcon from '../icons/LeaveIcon'
 import { logout } from '@/utils/localRequests'
 import PlayIcon from '../icons/PlayIcon'
 import DownArrow from '../icons/DownArrow'
+import { getUserById } from '@/utils/requests/users'
+import { User } from '@/utils/types'
 
 
 
@@ -49,17 +51,37 @@ const Navbar = () => {
 
 	const router = useRouter()
 
+	const [userData, setUserData] = useState<User>()
+
+	const getUserData = async (id: number) => {
+		console.log(typeof id)
+		const user = await getUserById(id)
+		setUserData(user)
+		console.log(user)
+	}
+
+	useEffect(() => {
+		const token_expires_at = localStorage.getItem('expires_at')
+		const user_id = localStorage.getItem("user_id")
+        if (!token_expires_at || new Date(JSON.parse(token_expires_at)) < new Date() || !user_id) {
+            logout(router, '/')
+        } else {
+			getUserData(JSON.parse(user_id))
+        }
+	}, [])
+
+	if(!userData) return <></>
+
 	return (
 		<div className={styles.container}>
 			<SongleSign notAnimated />
 			<div className={styles["right-container"]}>
 				<div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', position: 'relative' }} ref={wrapperRef} onClick={() => {
 					setShowPopup(true)
-					console.log("hi", showPopup)
 				}}>
 					<div className={styles["profile-image-container"]}  >
 						<Image
-							src="/pfps/johntransparent.png"
+							src={userData.profilePicture}
 							alt="profile"
 							fill
 							style={{ borderRadius: '100%' }}
@@ -73,15 +95,15 @@ const Navbar = () => {
 							<div className={styles.header}>
 								<div className={styles["pfp-container"]}>
 									<Image
-										src="/pfps/johntransparent.png"
+										src={userData.profilePicture}
 										alt="profile"
 										fill
 										style={{ borderRadius: '100%' }}
 									/>
 								</div>
 								<div className={styles["name-container"]}>
-									<h1 className={styles.name}>John</h1>
-									<h2 className={styles.email}>jmurphy5613@gmail.com</h2>
+									<h1 className={styles.name}>{userData.displayName}</h1>
+									<h2 className={styles.email}>{userData.spotifyId}</h2>
 								</div>
 							</div>
 							<div className={styles.links}>
