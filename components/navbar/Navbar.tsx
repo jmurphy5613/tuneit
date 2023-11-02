@@ -6,7 +6,6 @@ import { useState, useEffect, useRef, use } from 'react'
 import HomeIcon from '../icons/HomeIcon'
 import ClockIcon from '../icons/ClockIcon'
 import BookIcon from '../icons/BookIcons'
-import GearIcon from '../icons/GearIcon'
 import LeaveIcon from '../icons/LeaveIcon'
 import { logout } from '@/utils/localRequests'
 import PlayIcon from '../icons/PlayIcon'
@@ -70,6 +69,11 @@ const Navbar = () => {
         }
 	}, [])
 
+	const getProfilePicture = (userData: User) => {
+		if(userData.profilePicture === "") return "/playlist-icon.jpeg"
+		return userData.profilePicture
+	}
+
 	if(!userData) return <></>
 
 	return (
@@ -81,7 +85,7 @@ const Navbar = () => {
 				}}>
 					<div className={styles["profile-image-container"]}  >
 						<Image
-							src={userData.profilePicture}
+							src={getProfilePicture(userData)}
 							alt="profile"
 							fill
 							style={{ borderRadius: '100%' }}
@@ -95,7 +99,7 @@ const Navbar = () => {
 							<div className={styles.header}>
 								<div className={styles["pfp-container"]}>
 									<Image
-										src={userData.profilePicture}
+										src={getProfilePicture(userData)}
 										alt="profile"
 										fill
 										style={{ borderRadius: '100%' }}

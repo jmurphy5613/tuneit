@@ -31,6 +31,13 @@ export const getUserById = async (id: number) => {
 }
 
 export const createUser = async (userInfo: UserInfo, playlist_id: string): Promise<User> => {
+
+    const getUserPfp = () => {
+        if(userInfo.images.length > 0) {
+            return userInfo.images[0].url
+        }
+        return ""
+    }
     console.log(userInfo)
     const options = {
         url: `${apiURL}/users/create`,
@@ -39,7 +46,7 @@ export const createUser = async (userInfo: UserInfo, playlist_id: string): Promi
             spotifyId: userInfo.id,
             displayName: userInfo.display_name,
             playlistId: playlist_id,
-            profilePicture: userInfo.images[0].url || ""
+            profilePicture: getUserPfp()
         }
     }
 
